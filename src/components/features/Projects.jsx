@@ -1,6 +1,162 @@
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
 const Projects = () => {
+  // Styles
+  const styles = {
+    projects: {
+      padding: '80px 0',
+      position: 'relative',
+      overflow: 'hidden',
+      '& *': {
+        borderRadius: '0 !important'
+      }
+    },
+    container: {
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: '0 20px',
+      position: 'relative',
+      zIndex: 1
+    },
+    sectionHeader: {
+      textAlign: 'center',
+      marginBottom: '50px'
+    },
+    sectionTitle: {
+      fontSize: '2rem',
+      color: 'var(--text-primary)',
+      margin: '0 0 15px 0'
+    },
+    sectionLine: {
+      width: '60px',
+      height: '4px',
+      background: 'var(--primary-color)',
+      margin: '0 auto',
+      borderRadius: '2px'
+    },
+    projectsGrid: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+      gap: '30px',
+      marginTop: '30px'
+    },
+    projectCard: {
+      background: 'transparent',
+      borderRadius: '0',
+      padding: '25px',
+      transition: 'all 0.3s ease',
+      border: '1px solid #000000'
+    },
+    projectHeader: {
+      display: 'flex',
+      alignItems: 'center',
+      marginBottom: '20px',
+      gap: '15px'
+    },
+    projectIcon: {
+      fontSize: '2rem',
+      background: 'transparent',
+      width: '60px',
+      height: '60px',
+      borderRadius: '0',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexShrink: 0,
+    },
+    projectTitle: {
+      fontSize: '1.3rem',
+      margin: 0,
+      color: 'var(--text-primary)'
+    },
+    projectDescription: {
+      color: 'var(--text-secondary)',
+      lineHeight: 1.6,
+      margin: '0 0 20px 0',
+      fontSize: '0.95rem'
+    },
+    projectTech: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '10px',
+      margin: '0 0 20px 0'
+    },
+    techTag: {
+      display: 'inline-block',
+      background: 'transparent',
+      color: '#000000',
+      padding: '4px 12px',
+      borderRadius: '0',
+      fontSize: '0.8rem',
+      marginRight: '8px',
+      marginBottom: '8px',
+      border: '1px solid #000000'
+    },
+    projectRole: {
+      marginBottom: '15px',
+      h4: {
+        color: 'var(--text-primary)',
+        margin: '0 0 5px 0',
+        fontSize: '0.9rem'
+      },
+      p: {
+        color: 'var(--text-secondary)',
+        fontSize: '0.9rem',
+        margin: 0,
+        lineHeight: 1.5
+      }
+    },
+    projectOutcome: {
+      marginBottom: '20px',
+      h4: {
+        color: 'var(--text-primary)',
+        margin: '0 0 5px 0',
+        fontSize: '0.9rem'
+      },
+      p: {
+        color: 'var(--text-secondary)',
+        fontSize: '0.9rem',
+        margin: 0,
+        lineHeight: 1.5
+      }
+    },
+    projectLinks: {
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gap: '15px',
+      marginTop: '20px'
+    },
+    projectImage: {
+      width: '100%',
+      height: '200px',
+      objectFit: 'cover',
+      borderRadius: '0',
+      marginBottom: '20px'
+    },
+    projectLink: {
+      padding: '10px 15px',
+      textAlign: 'center',
+      borderRadius: '0',
+      textDecoration: 'none',
+      fontWeight: 600,
+      fontSize: '0.9rem',
+      transition: 'all 0.3s ease',
+      background: '#ffffff',
+      color: '#000000',
+      border: '1px solid #000000',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '8px',
+      '&:hover': {
+        transform: 'translateY(-2px)',
+        boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)'
+      },
+      '&:active': {
+        transform: 'translateY(0)'
+      }
+    }
+  };
   const projects = [
     {
       title: "Sell and Trade BlindBox Platform",
@@ -9,7 +165,7 @@ const Projects = () => {
       role: "Developed the main UI, built responsive layouts, and integrated APIs for authentication and account management. Implemented state management with React Hooks and optimized user experience.",
       outcome: "Successfully deployed on Vercel",
       liveUrl: "https://blindbox-vn.vercel.app",
-      repoUrl: "https://github.com/giangndve183728/BlindBox-ft",
+      repoUrl: "https://github.com/giangndse183728/BlindBox-FE",
       image: "🎁"
     },
     {
@@ -82,20 +238,20 @@ const Projects = () => {
   }
 
   return (
-    <section className="projects">
-      <div className="container">
+    <section id="projects" style={styles.projects}>
+      <div style={styles.container}>
         <motion.div 
-          className="section-header"
+          style={styles.sectionHeader}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.99] }}
         >
-          <h2 className="section-title">Featured Projects</h2>
-          <div className="section-line"></div>
+          <h2 style={styles.sectionTitle}>Featured Projects</h2>
+          <div style={styles.sectionLine}></div>
         </motion.div>
 
         <motion.div 
-          className="projects-grid"
+          style={styles.projectsGrid}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -103,17 +259,16 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div 
               key={project.title}
-              className="project-card"
+              style={styles.projectCard}
               variants={cardVariants}
               whileHover={{ 
-                y: -10,
-                boxShadow: "0 25px 50px rgba(0, 212, 255, 0.15)",
+                y: -5,
                 transition: { type: "spring", stiffness: 300 }
               }}
             >
-              <div className="project-header">
+              <div style={styles.projectHeader}>
                 <motion.div 
-                  className="project-icon"
+                  style={styles.projectIcon}
                   whileHover={{ 
                     scale: 1.2, 
                     rotate: 5,
@@ -122,24 +277,23 @@ const Projects = () => {
                 >
                   {project.image}
                 </motion.div>
-                <h3 className="project-title">{project.title}</h3>
+                <h3 style={styles.projectTitle}>{project.title}</h3>
               </div>
               
-              <p className="project-description">{project.description}</p>
+              <p style={styles.projectDescription}>{project.description}</p>
               
               <motion.div 
-                className="project-tech"
+                style={styles.projectTech}
                 variants={containerVariants}
               >
                 {project.techStack.map((tech, techIndex) => (
                   <motion.span 
                     key={techIndex} 
-                    className="tech-tag"
+                    style={styles.techTag}
                     variants={techVariants}
                     whileHover={{ 
-                      scale: 1.1, 
-                      y: -3,
-                      boxShadow: "0 4px 12px rgba(0, 212, 255, 0.2)"
+                      scale: 1.05,
+                      y: -2
                     }}
                     transition={{ type: "spring", stiffness: 400 }}
                   >
@@ -148,28 +302,27 @@ const Projects = () => {
                 ))}
               </motion.div>
               
-              <div className="project-role">
-                <h4>My Role:</h4>
-                <p>{project.role}</p>
+              <div style={styles.projectRole}>
+                <h4 style={styles.projectRole.h4}>My Role:</h4>
+                <p style={styles.projectRole.p}>{project.role}</p>
               </div>
               
-              <div className="project-outcome">
-                <h4>Outcome:</h4>
-                <p>{project.outcome}</p>
+              <div style={styles.projectOutcome}>
+                <h4 style={styles.projectOutcome.h4}>Outcome:</h4>
+                <p style={styles.projectOutcome.p}>{project.outcome}</p>
               </div>
               
-              <div className="project-links">
+              <div style={styles.projectLinks}>
                 <motion.a 
                   href={project.liveUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="project-link live"
+                  style={styles.projectLink}
                   whileHover={{ 
                     scale: 1.05, 
-                    y: -2,
-                    boxShadow: "0 8px 20px rgba(0, 212, 255, 0.3)"
+                    y: -2
                   }}
-                  whileTap={{ scale: 0.95 }}
+                  whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
                   Live Demo
@@ -178,51 +331,19 @@ const Projects = () => {
                   href={project.repoUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="project-link repo"
+                  style={styles.projectLink}
                   whileHover={{ 
                     scale: 1.05, 
-                    y: -2,
-                    boxShadow: "0 8px 20px rgba(255, 255, 255, 0.2)"
+                    y: -2
                   }}
-                  whileTap={{ scale: 0.95 }}
+                  whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  View Code
+                   View Code
                 </motion.a>
               </div>
             </motion.div>
           ))}
-        </motion.div>
-        
-        <motion.div 
-          className="projects-cta"
-          variants={ctaVariants}
-          initial="hidden"
-          animate="visible"
-          style={{ textAlign: 'center', marginTop: '80px' }}
-        >
-          <h3 style={{ marginBottom: '16px' }}>Interested in working together?</h3>
-          <p style={{ marginBottom: '32px', color: 'var(--text-secondary)' }}>
-            Let's discuss your project and see how I can help bring your ideas to life.
-          </p>
-          <motion.button 
-            className="btn btn-primary"
-            whileHover={{ 
-              scale: 1.05, 
-              y: -3,
-              boxShadow: "0 15px 35px rgba(0, 212, 255, 0.4)"
-            }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400 }}
-            onClick={() => {
-              const element = document.getElementById('contact')
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-              }
-            }}
-          >
-            Get In Touch
-          </motion.button>
         </motion.div>
       </div>
     </section>

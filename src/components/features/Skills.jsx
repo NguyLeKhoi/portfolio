@@ -1,228 +1,298 @@
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 import LogoLoop from "../ui/LogoLoop";
 
-const Skills = () => {
-  // Tech stack icons with proper styling
-  const techLogos = [
-    { 
-      node: (
-        <div style={{ width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" style={{ width: '100%', height: 'auto' }} />
-        </div>
-      ),
-      title: "React"
-    },
-    { 
-      node: (
-        <div style={{ width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" style={{ width: '100%', height: 'auto', filter: 'invert(100%)' }} />
-        </div>
-      ),
-      title: "Next.js"
-    },
-    { 
-      node: (
-        <div style={{ width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" style={{ width: '100%', height: 'auto' }} />
-        </div>
-      ),
-      title: "TypeScript"
-    },
-    { 
-      node: (
-        <div style={{ width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" style={{ width: '100%', height: 'auto' }} />
-        </div>
-      ),
-      title: "JavaScript"
-    },
-    { 
-      node: (
-        <div style={{ width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" style={{ width: '100%', height: 'auto' }} />
-        </div>
-      ),
-      title: "HTML5"
-    },
-    { 
-      node: (
-        <div style={{ width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" style={{ width: '100%', height: 'auto' }} />
-        </div>
-      ),
-      title: "CSS3"
-    },
-  ];
-
-  const skillCategories = [
-    {
-      title: "Frontend Development",
-      skills: ["React", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Context API"]
-    },
-    {
-      title: "Backend & Database",
-      skills: ["Node.js", "Express.js", "MongoDB", "REST APIs", "JWT Authentication"]
-    },
-    {
-      title: "Tools & Deployment",
-      skills: ["Git", "GitHub", "VS Code", "Postman", "Figma", "Vercel", "Docker", "CI/CD"]
-    }
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
+const SkillItem = ({ name, level }) => {
+  const getLevelColor = () => {
+    if (level >= 4) return '#10B981'; // Green
+    if (level >= 3) return '#F59E0B'; // Yellow
+    return '#EF4444'; // Red
   };
 
-  const categoryVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: [0.6, 0.05, 0.01, 0.99]
+  const styles = {
+    skillItem: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '4px',
+      width: '100%',
+      padding: '12px',
+      background: 'var(--surface-color)',
+      border: '1px solid var(--border-color)',
+      transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+      borderRadius: '0',
+      '&:hover': {
+        transform: 'translateY(-2px)',
+        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
       }
-    }
-  };
-
-  const skillVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        duration: 0.4,
-        ease: [0.6, 0.05, 0.01, 0.99]
-      }
-    }
-  };
-
-  const highlightVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.6, 0.05, 0.01, 0.99]
-      }
+    },
+    skillHeader: { 
+      display: 'flex', 
+      justifyContent: 'space-between', 
+      alignItems: 'center' 
+    },
+    skillName: { 
+      fontSize: '0.9rem', 
+      fontWeight: 500,
+      color: 'var(--text-primary)'
+    },
+    skillLevel: {
+      fontSize: '0.8rem',
+      fontWeight: 600,
+      color: getLevelColor()
+    },
+    progressBar: {
+      height: '6px',
+      background: 'rgba(0, 0, 0, 0.1)',
+      borderRadius: '0',
+      overflow: 'hidden',
+      marginTop: '4px'
+    },
+    progressFill: {
+      width: `${(level / 5) * 100}%`,
+      height: '100%',
+      background: getLevelColor(),
+      borderRadius: '0',
+      transition: 'width 0.5s ease, background 0.3s ease'
     }
   };
 
   return (
-    <section className="skills-section">
-      <div className="container">
+    <div style={styles.skillItem}>
+      <div style={styles.skillHeader}>
+        <span style={styles.skillName}>{name}</span>
+        <span style={styles.skillLevel}>
+          {level >= 4 ? 'Advanced' : level >= 3 ? 'Intermediate' : 'Beginner'}
+        </span>
+      </div>
+      <div style={styles.progressBar}>
+        <div style={styles.progressFill} />
+      </div>
+    </div>
+  );
+};
+
+const Skills = () => {
+  // Styles
+  const styles = {
+    skillsSection: {
+      padding: '80px 0',
+      background: 'var(--background-color)',
+      position: 'relative',
+      overflow: 'hidden',
+      '& *': {
+        borderRadius: '0 !important'
+      }
+    },
+    container: {
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: '0 20px',
+      position: 'relative',
+      zIndex: 1
+    },
+    header: {
+      textAlign: 'center',
+      marginBottom: '60px'
+    },
+    title: {
+      fontSize: '2.5rem',
+      fontWeight: 700,
+      margin: '0 0 15px 0',
+      color: 'var(--text-primary)',
+      position: 'relative',
+      display: 'inline-block',
+      '&::after': {
+        content: '""',
+        position: 'absolute',
+        bottom: '-10px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '80px',
+        height: '4px',
+        background: 'var(--primary-color)',
+        borderRadius: '2px'
+      }
+    },
+    subtitle: {
+      fontSize: '1.1rem',
+      color: 'var(--text-secondary)',
+      maxWidth: '700px',
+      margin: '0 auto',
+      lineHeight: 1.6
+    },
+    skillSection: {
+      marginBottom: '60px',
+      position: 'relative'
+    },
+    sectionTitle: {
+      fontSize: '1.5rem',
+      marginBottom: '20px',
+      color: 'var(--text-primary)',
+      fontWeight: 600,
+      position: 'relative',
+      paddingLeft: '15px'
+    },
+    logoContainer: {
+      height: '100px',
+      margin: '20px 0 40px',
+      position: 'relative'
+    },
+    skillsGrid: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+      gap: '15px',
+      width: '100%',
+      '& *': {
+        borderRadius: '0 !important'
+      }
+    },
+    highlightCard: {
+      background: 'linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(0, 0, 0, 0) 100%)',
+      border: '1px solid rgba(0, 212, 255, 0.1)',
+      borderRadius: '0',
+      padding: '30px',
+      marginTop: '40px',
+      position: 'relative',
+      overflow: 'hidden'
+    },
+    highlightTitle: {
+      fontSize: '1.3rem',
+      fontWeight: 600,
+      margin: '0 0 15px 0',
+      color: 'var(--text-primary)'
+    },
+    highlightText: {
+      fontSize: '1rem',
+      lineHeight: 1.7,
+      color: 'var(--text-secondary)',
+      margin: 0
+    }
+  };
+
+  const frontendTech = [
+    { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', level: 4.5 },
+    { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', level: 4, invert: true },
+    { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', level: 4 },
+    { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', level: 4.5 },
+    { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', level: 5 },
+    { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg', level: 4.5 },
+  ];
+
+  const backendTech = [
+    { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', level: 4 },
+    { name: 'Express', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', level: 4, invert: true },
+    { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', level: 4 },
+    { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg', level: 3.5 },
+    { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', level: 3.5 },
+    { name: 'REST API', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg', level: 4.5 },
+    { name: 'GraphQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg', level: 3.5 },
+  ];
+
+  const tools = [
+    { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', level: 4.5 },
+    { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', level: 4.5, invert: true },
+    { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', level: 3.5 },
+    { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg', level: 5 },
+    { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg', level: 4 },
+    { name: 'Postman', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg', level: 4.5 },
+  ];
+
+  const createLogos = (techArray) => 
+    techArray.map((tech, index) => ({
+      node: (
+        <div 
+          key={`${tech.name}-${index}`}
+          style={{ 
+            width: '50px', 
+            height: '50px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '5px',
+            transition: 'transform 0.2s ease'
+          }}
+        >
+          <img 
+            src={tech.icon} 
+            alt={tech.name}
+            style={{ 
+              width: '100%', 
+              height: 'auto',
+              filter: tech.invert ? 'invert(100%)' : 'none',
+              opacity: 0.9,
+              transition: 'all 0.2s ease'
+            }} 
+          />
+        </div>
+      ),
+      title: tech.name
+    }));
+
+  const frontendLogos = createLogos(frontendTech);
+  const backendLogos = createLogos(backendTech);
+  const toolsLogos = createLogos(tools);
+
+  const renderSkillSection = (title, logos, items, reverse = false) => (
+    <motion.div
+      style={styles.skillSection}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.3 }}
+    >
+      <h3 style={styles.sectionTitle}>
+        {title}
+      </h3>
+      
+      <div style={styles.logoContainer}>
+        <LogoLoop
+          logos={logos}
+          speed={10}
+          direction={title.includes('Backend') ? 'right' : 'left'}
+          logoHeight={60}
+          gap={60}
+          pauseOnHover
+          scaleOnHover
+          fadeOut
+          fadeOutColor="#000000"
+          ariaLabel={`${title} technologies`}
+        />
+      </div>
+      
+      <div style={styles.skillsGrid}>
+        {items.map((item, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1, duration: 0.5 }}
+          >
+            <SkillItem name={item.name} level={item.level} />
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  );
+
+  return (
+    <section id="skills" style={styles.skillsSection}>
+      <div style={styles.container}>
         <motion.div
-          className="section-header"
+          style={styles.header}
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.99] }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
         >
-          <h2 className="section-title">Skills & Expertise</h2>
-          <div className="section-line"></div>
+          <h2 style={styles.title}>Skills & Expertise</h2>
+          <p style={styles.subtitle}>
+            Here are the technologies and tools I work with on a daily basis.
+          </p>
         </motion.div>
-
-        {/* Tech Stack Logo Loop */}
-        <motion.div
-          className="tech-stack-section"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.99] }}
-        >
-          <h3>Tech Stack</h3>
-          <div style={{ height: '150px', margin: '40px 0', display: 'flex', alignItems: 'center' }}>
-            <div style={{ width: '100%' }}>
-              <LogoLoop
-                logos={techLogos}
-                speed={20}
-                direction="left"
-                logoHeight={80}
-                gap={60}
-                pauseOnHover={true}
-                scaleOnHover={true}
-                fadeOut={true}
-                fadeOutColor="#0a0a0a"
-                ariaLabel="Technology stack"
-              />
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Skill Categories with Badges - 2x2 Grid */}
-        <motion.div
-          className="skills-grid-2x2"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {skillCategories.map((category, index) => (
-            <motion.div
-              key={index}
-              className="skill-category"
-              variants={categoryVariants}
-              whileHover={{ 
-                y: -8,
-                boxShadow: "0 20px 40px rgba(0, 212, 255, 0.15)",
-                transition: { type: "spring", stiffness: 300 }
-              }}
-            >
-              <h3 className="category-title">{category.title}</h3>
-              <div className="skills-list">
-                {category.skills.map((skill, skillIndex) => (
-                  <motion.span
-                    key={skill}
-                    className="skill-item"
-                    variants={skillVariants}
-                    whileHover={{ 
-                      scale: 1.05, 
-                      y: -2,
-                      boxShadow: "0 4px 12px rgba(0, 212, 255, 0.2)"
-                    }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Highlight Card */}
-        <motion.div
-          className="skills-highlight"
-          variants={highlightVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="highlight-card">
-            <div className="highlight-content">
-              <h3>Always Learning</h3>
-              <p>I'm constantly exploring new technologies and frameworks to stay current with industry trends and deliver the best solutions.</p>
-              <div className="highlight-stats">
-                <div className="stat">
-                  <span className="stat-number">5+</span>
-                  <span className="stat-label">Years Experience</span>
-                </div>
-                <div className="stat">
-                  <span className="stat-number">50+</span>
-                  <span className="stat-label">Projects Completed</span>
-                </div>
-                <div className="stat">
-                  <span className="stat-number">20+</span>
-                  <span className="stat-label">Technologies</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+        
+        {renderSkillSection('Frontend Development', frontendLogos, frontendTech)}
+        {renderSkillSection('Backend Development', backendLogos, backendTech)}
+        {renderSkillSection('Tools & Platforms', toolsLogos, tools, true)}
       </div>
     </section>
   )

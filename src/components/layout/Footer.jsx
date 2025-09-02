@@ -1,6 +1,104 @@
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
 const Footer = () => {
+  // Styles
+  const styles = {
+    footer: {
+      backgroundColor: 'var(--surface-color)',
+      padding: '60px 0 20px',
+      color: 'var(--text-secondary)',
+      position: 'relative',
+      overflow: 'hidden'
+    },
+    container: {
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: '0 20px'
+    },
+    content: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+      gap: '40px',
+      marginBottom: '40px'
+    },
+    brand: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '15px'
+    },
+    logo: {
+      fontSize: '2rem',
+      fontWeight: 700,
+      color: 'var(--text-primary)',
+      display: 'inline-block',
+      cursor: 'pointer',
+      width: 'fit-content'
+    },
+    tagline: {
+      fontSize: '0.95rem',
+      lineHeight: 1.6,
+      margin: 0
+    },
+    links: {
+      h4: {
+        color: 'var(--text-primary)',
+        fontSize: '1.1rem',
+        margin: '0 0 15px 0'
+      },
+      ul: {
+        listStyle: 'none',
+        padding: 0,
+        margin: 0,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px'
+      },
+      a: {
+        color: 'var(--text-secondary)',
+        textDecoration: 'none',
+        fontSize: '0.95rem',
+        display: 'inline-block',
+        cursor: 'pointer'
+      }
+    },
+    social: {
+      h4: {
+        color: 'var(--text-primary)',
+        fontSize: '1.1rem',
+        margin: '0 0 15px 0'
+      },
+      links: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px'
+      },
+      link: {
+        color: 'var(--text-secondary)',
+        textDecoration: 'none',
+        fontSize: '0.95rem',
+        display: 'inline-block',
+        cursor: 'pointer',
+        width: 'fit-content'
+      }
+    },
+    bottom: {
+      paddingTop: '30px',
+      textAlign: 'center',
+      position: 'relative'
+    },
+    line: {
+      height: '1px',
+      width: '100%',
+      background: 'var(--border-color)',
+      marginBottom: '20px',
+      transformOrigin: 'left center'
+    },
+    copyright: {
+      fontSize: '0.85rem',
+      margin: 0,
+      color: 'var(--text-muted)'
+    }
+  };
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -36,20 +134,20 @@ const Footer = () => {
   }
 
   return (
-    <footer className="footer">
-      <div className="container">
+    <footer style={styles.footer}>
+      <div style={styles.container}>
         <motion.div 
-          className="footer-content"
+          style={styles.content}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           <motion.div 
-            className="footer-brand"
+            style={styles.brand}
             variants={itemVariants}
           >
             <motion.div 
-              className="footer-logo"
+              style={styles.logo}
               whileHover={{ 
                 scale: 1.1,
                 color: "var(--primary-color)",
@@ -58,23 +156,24 @@ const Footer = () => {
             >
               NK
             </motion.div>
-            <p className="footer-tagline">
+            <p style={styles.tagline}>
               Frontend Developer passionate about creating beautiful digital experiences
             </p>
           </motion.div>
 
           <motion.div 
-            className="footer-links"
+            style={styles.links}
             variants={itemVariants}
           >
-            <h4>Quick Links</h4>
-            <ul>
+            <h4 style={styles.links.h4}>Quick Links</h4>
+            <ul style={styles.links.ul}>
               <li>
                 <motion.a 
                   href="#" 
+                  style={styles.links.a}
                   onClick={(e) => { 
                     e.preventDefault(); 
-                    document.getElementById('home').scrollIntoView({ behavior: 'smooth', block: 'start' }) 
+                    document.getElementById('home')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
                   whileHover={{ 
                     color: "var(--primary-color)",
@@ -88,9 +187,10 @@ const Footer = () => {
               <li>
                 <motion.a 
                   href="#" 
+                  style={styles.links.a}
                   onClick={(e) => { 
                     e.preventDefault(); 
-                    document.getElementById('about').scrollIntoView({ behavior: 'smooth', block: 'start' }) 
+                    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
                   whileHover={{ 
                     color: "var(--primary-color)",
@@ -104,9 +204,10 @@ const Footer = () => {
               <li>
                 <motion.a 
                   href="#" 
+                  style={styles.links.a}
                   onClick={(e) => { 
                     e.preventDefault(); 
-                    document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' }) 
+                    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
                   whileHover={{ 
                     color: "var(--primary-color)",
@@ -120,9 +221,10 @@ const Footer = () => {
               <li>
                 <motion.a 
                   href="#" 
+                  style={styles.links.a}
                   onClick={(e) => { 
                     e.preventDefault(); 
-                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' }) 
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
                   whileHover={{ 
                     color: "var(--primary-color)",
@@ -137,16 +239,16 @@ const Footer = () => {
           </motion.div>
 
           <motion.div 
-            className="footer-social"
+            style={styles.social}
             variants={itemVariants}
           >
-            <h4>Connect</h4>
-            <div className="social-links">
+            <h4 style={styles.social.h4}>Connect</h4>
+            <div style={styles.social.links}>
               <motion.a 
                 href="https://github.com/NguyLekhoi" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="social-link"
+                style={styles.social.link}
                 whileHover={{ 
                   color: "var(--primary-color)",
                   y: -2,
@@ -157,7 +259,7 @@ const Footer = () => {
               </motion.a>
               <motion.a 
                 href="mailto:nguyenlekhoi2003215@gmail.com"
-                className="social-link"
+                style={styles.social.link}
                 whileHover={{ 
                   color: "var(--primary-color)",
                   y: -2,
@@ -171,18 +273,18 @@ const Footer = () => {
         </motion.div>
 
         <motion.div 
-          className="footer-bottom"
+          style={styles.bottom}
           variants={bottomVariants}
           initial="hidden"
           animate="visible"
         >
           <motion.div 
-            className="footer-line"
+            style={styles.line}
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 1, ease: [0.6, 0.05, 0.01, 0.99] }}
           ></motion.div>
-          <p className="footer-copyright">
+          <p style={styles.copyright}>
             © 2024 Nguyễn Lê Khôi. All rights reserved.
           </p>
         </motion.div>

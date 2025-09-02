@@ -19,21 +19,26 @@ const LogoLoop = ({
   const [isPaused, setIsPaused] = useState(false);
   const [isInView, setIsInView] = useState(true);
 
-  // Duplicate logos for seamless looping
-  const duplicatedLogos = [...logos, ...logos];
+  // Create more duplicates for smoother looping
+  const duplicatedLogos = [...logos, ...logos, ...logos, ...logos];
 
   // Animation controls
   useEffect(() => {
     if (isPaused) return;
     
     const startAnimation = async () => {
+      // Set initial position
+      await controls.set({ x: '0%' });
+      
+      // Start the animation
       await controls.start({
-        x: ['0%', '-50%'],
+        x: '-100%',
         transition: {
-          duration: speed,
+          duration: speed * 2, // Longer duration for smoother loop
           ease: 'linear',
           repeat: Infinity,
           repeatType: 'loop',
+          repeatDelay: 0,
         },
       });
     };
@@ -73,11 +78,13 @@ const LogoLoop = ({
       aria-label={ariaLabel}
     >
       <motion.div
+        ref={containerRef}
         style={{
           display: 'flex',
           alignItems: 'center',
           gap: `${gap}px`,
           height: '100%',
+          width: 'max-content',
           willChange: 'transform',
         }}
         animate={controls}

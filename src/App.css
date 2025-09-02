@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+/* Global Styles and Variables */
 * {
   margin: 0;
   padding: 0;
@@ -6,57 +6,85 @@
 }
 
 :root {
-  --primary-color: #00d4ff;
-  --secondary-color: #1a1a1a;
-  --accent-color: #333333;
-  --background-color: #0a0a0a;
-  --surface-color: #1a1a1a;
-  --border-color: #333333;
-  --text-primary: #ffffff;
-  --text-secondary: #cccccc;
-  --text-muted: #888888;
-  --shadow-light: 0 2px 8px rgba(0, 212, 255, 0.1);
-  --shadow-medium: 0 4px 16px rgba(0, 212, 255, 0.2);
-  --border-radius: 0;
+  /* Effect Variables */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Dark theme overrides */
-.dark-theme {
-  --primary-color: #00d4ff;
-  --secondary-color: #1a1a1a;
-  --accent-color: #333333;
-  --background-color: #0a0a0a;
-  --surface-color: #1a1a1a;
-  --border-color: #333333;
-  --text-primary: #ffffff;
-  --text-secondary: #cccccc;
-  --text-muted: #888888;
-}
-
+/* Base Styles */
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
-  color: var(--text-primary);
-  background-color: var(--background-color);
+  color: #000000;
+  background-color: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
 }
 
 .App {
   min-height: 100vh;
-  background-color: var(--background-color);
+  background-image: url('/background/vecteezySubtleBackgroundFV0223_generated.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
-.App {
-  min-height: 100vh;
-  background-color: var(--background-color);
+/* Section styles */
+section {
+  color: #000000;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background: none !important;
 }
 
-.container {
+/* Experience and Education sections */
+section#experience,
+section#education {
+  padding: 0;
+  margin: 0;
+}
+
+/* Remove margins between sections */
+section + section {
+  margin: 0;
+}
+
+/* Header styles */
+header {
+  position: relative;
+  z-index: 100;
+}
+
+/* Section content */
+.section-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+  background: none !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00a3c4;
 }
 
 /* Typography */
@@ -169,16 +197,15 @@ main {
 
 section {
   padding: 40px 0;
+  background-color: var(--background-color);
 }
 
-section:nth-child(even) {
-  background: var(--surface-color);
-}
+/* Removed alternating section backgrounds for consistency */
 
 /* Section Headers */
 .section-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom:  px;
 }
 
 .section-title {
@@ -227,7 +254,7 @@ section:nth-child(even) {
   display: inline-block;
   padding: 6px 12px;
   background: var(--surface-color);
-  border-radius: 50px;
+  border-radius: 0;
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--primary-color);
@@ -294,30 +321,33 @@ section:nth-child(even) {
 
 .image-container {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: 450px;
+  height: 600px;
+  margin: 0 auto;
 }
 
 .image-placeholder {
   width: 100%;
   height: 100%;
-  background: var(--surface-color);
-  border: 2px solid var(--border-color);
-  border-radius: var(--border-radius);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 8rem;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  border-radius: 0;
 }
 
 .image-frame {
   position: absolute;
   top: 20px;
-  left: 20px;
-  right: -20px;
+  left: 50px;
+  right: 40px;
   bottom: -20px;
   border: 2px solid var(--primary-color);
-  border-radius: var(--border-radius);
+  border-radius: 0;
   z-index: -1;
 }
 
@@ -355,10 +385,32 @@ section:nth-child(even) {
   font-size: 1.5rem;
 }
 
+.stack-wrapper {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.about-image {
+  position: relative;
+  border-radius: 0;
+  overflow: visible;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Skills Section */
 .skills-section {
-  padding: 60px 0;
-  background: var(--bg-secondary);
+  padding: 100px 0;
+  position: relative;
+  background-color: var(--background-color);
 }
 
 .skills-section .section-header {
@@ -380,13 +432,15 @@ section:nth-child(even) {
   height: 4px;
   background: linear-gradient(135deg, var(--primary), var(--accent));
   margin: 0 auto;
-  border-radius: 2px;
+  border-radius: 0;
 }
 
 /* Tech Stack Section */
 .tech-stack-section {
   text-align: center;
   margin-bottom: 60px;
+  background-color: var(--background-color);
+  padding: 40px 0;
 }
 
 .tech-stack-section h3 {
@@ -460,13 +514,15 @@ section:nth-child(even) {
 .highlight-card {
   background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
   border: 1px solid var(--border-color);
-  border-radius: 20px;
+  border-radius: 0;
   padding: 40px;
   text-align: center;
   position: relative;
   overflow: hidden;
   max-width: 800px;
   width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
 }
 
 .highlight-card::before {
@@ -542,13 +598,16 @@ section:nth-child(even) {
 .animation-separator .animation-separator {
   width: 60px;
   height: 60px;
-  border-radius: 50%;
+  border-radius: 0;
   background: linear-gradient(135deg, var(--primary), var(--accent));
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+  margin: 0 auto 30px;
+  position: relative;
+  z-index: 1;
 }
 
 .animation-separator .animation-separator:not(.animation-separator) {
@@ -963,6 +1022,17 @@ section:nth-child(even) {
   .skills-grid-2x2 {
     grid-template-columns: repeat(2, 1fr);
     max-width: 800px;
+  }
+}
+
+@media (max-width: 992px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .stack-wrapper {
+    height: 450px;
   }
 }
 

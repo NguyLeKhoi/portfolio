@@ -1,6 +1,175 @@
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
 const Contact = () => {
+  // Styles
+  const styles = {
+    contact: {
+      padding: '80px 0',
+      background: 'var(--background-color)',
+      position: 'relative',
+      overflow: 'hidden'
+    },
+    container: {
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: '0 20px',
+      position: 'relative',
+      zIndex: 1
+    },
+    sectionHeader: {
+      textAlign: 'center',
+      marginBottom: '60px'
+    },
+    sectionTitle: {
+      fontSize: '2.5rem',
+      fontWeight: 700,
+      margin: '0 0 15px 0',
+      color: 'var(--text-primary)',
+      position: 'relative',
+      display: 'inline-block'
+    },
+    sectionLine: {
+      height: '4px',
+      width: '80px',
+      background: 'var(--primary-color)',
+      margin: '0 auto',
+      borderRadius: '2px'
+    },
+    contactContent: {
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gap: '40px',
+      '@media (max-width: 992px)': {
+        gridTemplateColumns: '1fr'
+      }
+    },
+    contactInfo: {
+      padding: '30px',
+      borderRadius: '0',
+      background: 'var(--surface-color)',
+      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+    },
+    contactSubtitle: {
+      fontSize: '1.5rem',
+      margin: '0 0 20px 0',
+      color: 'var(--text-primary)',
+      position: 'relative',
+      paddingLeft: '15px'
+    },
+    contactList: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '20px',
+      marginBottom: '40px'
+    },
+    contactItem: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '15px',
+      padding: '15px',
+      borderRadius: '0',
+      background: 'rgba(255, 255, 255, 0.02)',
+      border: '1px solid var(--border-color)',
+      transition: 'all 0.3s ease'
+    },
+    contactIcon: {
+      fontSize: '1.5rem',
+      width: '50px',
+      height: '50px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'rgba(0, 212, 255, 0.1)',
+      borderRadius: '50%',
+      flexShrink: 0
+    },
+    contactDetails: {
+      flex: 1
+    },
+    contactLink: {
+      color: 'var(--text-secondary)',
+      textDecoration: 'none',
+      transition: 'all 0.3s ease',
+      display: 'block',
+      '&:hover': {
+        color: 'var(--primary-color)'
+      }
+    },
+    languagesSection: {
+      marginTop: '40px'
+    },
+    languagesList: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '15px'
+    },
+    languageItem: {
+      padding: '10px 20px',
+      background: 'var(--surface-color)',
+      borderRadius: '0',
+      border: '1px solid var(--border-color)',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '10px',
+      transition: 'all 0.3s ease'
+    },
+    languageName: {
+      fontWeight: 500,
+      color: 'var(--text-primary)'
+    },
+    languageLevel: {
+      color: 'var(--text-secondary)',
+      fontSize: '0.9rem'
+    },
+    contactForm: {
+      padding: '30px',
+      borderRadius: '0',
+      background: 'var(--surface-color)',
+      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+    },
+    form: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '20px'
+    },
+    formGroup: {
+      marginBottom: '15px'
+    },
+    formInput: {
+      width: '100%',
+      padding: '12px 15px',
+      borderRadius: '0',
+      border: '1px solid var(--border-color)',
+      background: 'var(--background-color)',
+      color: 'var(--text-primary)',
+      fontSize: '1rem',
+      transition: 'all 0.3s ease',
+      '&:focus': {
+        borderColor: 'var(--primary-color)',
+        boxShadow: '0 0 0 2px rgba(0, 212, 255, 0.2)',
+        outline: 'none'
+      },
+      '&::placeholder': {
+        color: 'var(--text-muted)'
+      }
+    },
+    textarea: {
+      minHeight: '150px',
+      resize: 'vertical'
+    },
+    '@media (max-width: 768px)': {
+      contactContent: {
+        gridTemplateColumns: '1fr'
+      },
+      contactItem: {
+        flexDirection: 'column',
+        textAlign: 'center'
+      },
+      contactIcon: {
+        margin: '0 auto'
+      }
+    }
+  };
   const contactInfo = [
     {
       type: "Phone",
@@ -81,34 +250,34 @@ const Contact = () => {
   }
 
   return (
-    <section className="contact">
-      <div className="container">
+    <section id="contact" style={styles.contact}>
+      <div style={styles.container}>
         <motion.div 
-          className="section-header"
+          style={styles.sectionHeader}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.99] }}
         >
-          <h2 className="section-title">Get In Touch</h2>
-          <div className="section-line"></div>
+          <h2 style={styles.sectionTitle}>Get In Touch</h2>
+          <div style={styles.sectionLine}></div>
         </motion.div>
 
-        <div className="contact-content">
+        <div style={styles.contactContent}>
           <motion.div 
-            className="contact-info"
+            style={styles.contactInfo}
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            <h3 className="contact-subtitle">Contact Information</h3>
+            <h3 style={styles.contactSubtitle}>Contact Information</h3>
             <motion.div 
-              className="contact-list"
+              style={styles.contactList}
               variants={containerVariants}
             >
               {contactInfo.map((info, index) => (
                 <motion.div 
                   key={info.type}
-                  className="contact-item"
+                  style={styles.contactItem}
                   variants={itemVariants}
                   whileHover={{ 
                     x: 10,
@@ -116,7 +285,7 @@ const Contact = () => {
                   }}
                 >
                   <motion.div 
-                    className="contact-icon"
+                    style={styles.contactIcon}
                     whileHover={{ 
                       scale: 1.2, 
                       rotate: 5,
@@ -125,12 +294,12 @@ const Contact = () => {
                   >
                     {info.icon}
                   </motion.div>
-                  <div className="contact-details">
-                    <h4>{info.type}</h4>
+                  <div style={styles.contactDetails}>
+                    <h4 style={{ margin: '0 0 5px 0', color: 'var(--text-primary)' }}>{info.type}</h4>
                     {info.link ? (
                       <motion.a 
                         href={info.link} 
-                        className="contact-link"
+                        style={styles.contactLink}
                         whileHover={{ 
                           color: "var(--primary-color)",
                           x: 5,
@@ -140,23 +309,23 @@ const Contact = () => {
                         {info.value}
                       </motion.a>
                     ) : (
-                      <p>{info.value}</p>
+                      <p style={{ margin: 0, color: 'var(--text-secondary)' }}>{info.value}</p>
                     )}
                   </div>
                 </motion.div>
               ))}
             </motion.div>
 
-            <div className="languages-section">
-              <h3 className="contact-subtitle">Languages</h3>
+            <div style={styles.languagesSection}>
+              <h3 style={styles.contactSubtitle}>Languages</h3>
               <motion.div 
-                className="languages-list"
+                style={styles.languagesList}
                 variants={containerVariants}
               >
                 {languages.map((lang, index) => (
                   <motion.div 
                     key={lang.name}
-                    className="language-item"
+                    style={styles.languageItem}
                     variants={itemVariants}
                     whileHover={{ 
                       scale: 1.02,
@@ -164,8 +333,8 @@ const Contact = () => {
                       transition: { type: "spring", stiffness: 300 }
                     }}
                   >
-                    <span className="language-name">{lang.name}</span>
-                    <span className="language-level">{lang.level}</span>
+                    <span style={styles.languageName}>{lang.name}</span>
+                    {lang.level && <span style={styles.languageLevel}>{lang.level}</span>}
                   </motion.div>
                 ))}
               </motion.div>
@@ -173,95 +342,89 @@ const Contact = () => {
           </motion.div>
 
           <motion.div 
-            className="contact-form"
+            style={styles.contactForm}
             variants={formVariants}
             initial="hidden"
             animate="visible"
           >
-            <h3 className="contact-subtitle">Send Message</h3>
+            <h3 style={styles.contactSubtitle}>Send Message</h3>
             <motion.form 
-              className="form"
+              style={styles.form}
               variants={containerVariants}
             >
               <motion.div 
-                className="form-group"
+                style={styles.formGroup}
                 variants={inputVariants}
               >
                 <input 
                   type="text" 
                   placeholder="Your Name" 
-                  className="form-input"
+                  style={styles.formInput}
                   required
                 />
               </motion.div>
               <motion.div 
-                className="form-group"
+                style={styles.formGroup}
                 variants={inputVariants}
               >
                 <input 
                   type="email" 
                   placeholder="Your Email" 
-                  className="form-input"
+                  style={styles.formInput}
                   required
                 />
               </motion.div>
               <motion.div 
-                className="form-group"
+                style={styles.formGroup}
                 variants={inputVariants}
               >
                 <input 
                   type="text" 
                   placeholder="Subject" 
-                  className="form-input"
+                  style={styles.formInput}
                   required
                 />
               </motion.div>
               <motion.div 
-                className="form-group"
+                style={styles.formGroup}
                 variants={inputVariants}
               >
                 <textarea 
                   placeholder="Your Message" 
-                  className="form-textarea"
-                  rows="5"
+                  style={{ ...styles.formInput, ...styles.textarea }}
                   required
                 ></textarea>
               </motion.div>
-              <motion.button 
-                type="submit" 
-                className="btn btn-primary"
+              <motion.div 
+                style={styles.formGroup}
                 variants={inputVariants}
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -3,
-                  boxShadow: "0 15px 35px rgba(0, 212, 255, 0.4)"
-                }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400 }}
               >
-                Send Message
-              </motion.button>
-              <motion.button 
-                type="button" 
-                className="btn btn-secondary"
-                style={{ marginTop: '16px' }}
-                variants={inputVariants}
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -3,
-                  boxShadow: "0 10px 30px rgba(255, 255, 255, 0.2)"
-                }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400 }}
-                onClick={() => {
-                  const element = document.getElementById('projects')
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                  }
-                }}
-              >
-                View My Projects
-              </motion.button>
+                <motion.button 
+                  type="submit" 
+                  style={{
+                    background: '#ffffff',
+                    color: '#000000',
+                    border: '1px solid #000000',
+                    padding: '12px 30px',
+                    borderRadius: '0',
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)'
+                    },
+                    '&:active': {
+                      transform: 'translateY(0)'
+                    }
+                  }}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Send Message
+                </motion.button>
+              </motion.div>
             </motion.form>
           </motion.div>
         </div>

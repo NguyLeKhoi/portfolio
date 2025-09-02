@@ -87,21 +87,11 @@ const Header = () => {
       borderRadius: 0,
       ...(isMobile && { fontSize: '1.25rem' })
     },
-    menuToggle: {
-      display: isMobile ? 'flex' : 'none',
-      flexDirection: 'column', justifyContent: 'space-around',
-      width: '28px', height: '24px',
-      background: 'transparent', border: 'none',
-      cursor: 'pointer', padding: 0, zIndex: 10,
-    },
     bar: {
       display: 'block', width: '100%', height: '3px',
       background: '#ffffff', borderRadius: '2px',
       transition: 'all 0.3s ease-in-out',
     },
-    bar1: menuOpen ? { transform: 'translateY(8px) rotate(45deg)' } : {},
-    bar2: menuOpen ? { opacity: 0 } : {},
-    bar3: menuOpen ? { transform: 'translateY(-8px) rotate(-45deg)' } : {},
   };
 
   return (
@@ -115,10 +105,34 @@ const Header = () => {
           ))}
         </nav>
 
-        <button style={styles.menuToggle} onClick={toggleMenu} aria-label="Toggle menu">
-          <span style={{...styles.bar, ...styles.bar1}}></span>
-          <span style={{...styles.bar, ...styles.bar2}}></span>
-          <span style={{...styles.bar, ...styles.bar3}}></span>
+        <button 
+          onClick={toggleMenu} 
+          aria-label="Toggle menu"
+          style={{
+            display: isMobile ? 'flex' : 'none',
+            flexDirection: 'column',
+            justifyContent: 'space-around',
+            width: '28px',
+            height: '24px',
+            background: 'transparent',
+            border: 'none',
+            cursor: 'pointer',
+            padding: 0,
+            zIndex: 10
+          }}
+        >
+          <span style={{
+            ...styles.bar,
+            transform: menuOpen ? 'translateY(8px) rotate(45deg)' : 'none'
+          }}></span>
+          <span style={{
+            ...styles.bar,
+            opacity: menuOpen ? 0 : 1
+          }}></span>
+          <span style={{
+            ...styles.bar,
+            transform: menuOpen ? 'translateY(-8px) rotate(-45deg)' : 'none'
+          }}></span>
         </button>
       </div>
     </header>

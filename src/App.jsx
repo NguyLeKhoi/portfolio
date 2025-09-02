@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import './App.css'
-import Header from './components/layout/Header'
 import Hero from './components/features/Hero'
 import About from './components/features/About'
 import Skills from './components/features/Skills'
@@ -13,13 +12,9 @@ import Footer from './components/layout/Footer'
 function App() {
   return (
     <div className="App">
-      <Header />
-
+      <Hero />
+      
       <main>
-        <section id="home">
-          <Hero />
-        </section>
-
         <section id="about">
           <About />
         </section>
