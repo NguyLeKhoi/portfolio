@@ -1,162 +1,8 @@
 import { motion } from 'framer-motion';
+import './Projects.css';
 
 const Projects = () => {
-  // Styles
-  const styles = {
-    projects: {
-      padding: '80px 0',
-      position: 'relative',
-      overflow: 'hidden',
-      '& *': {
-        borderRadius: '0 !important'
-      }
-    },
-    container: {
-      maxWidth: '1200px',
-      margin: '0 auto',
-      padding: '0 20px',
-      position: 'relative',
-      zIndex: 1
-    },
-    sectionHeader: {
-      textAlign: 'center',
-      marginBottom: '50px'
-    },
-    sectionTitle: {
-      fontSize: '2rem',
-      color: 'var(--text-primary)',
-      margin: '0 0 15px 0'
-    },
-    sectionLine: {
-      width: '60px',
-      height: '4px',
-      background: 'var(--primary-color)',
-      margin: '0 auto',
-      borderRadius: '2px'
-    },
-    projectsGrid: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-      gap: '30px',
-      marginTop: '30px'
-    },
-    projectCard: {
-      background: 'transparent',
-      borderRadius: '0',
-      padding: '25px',
-      transition: 'all 0.3s ease',
-      border: '1px solid #000000'
-    },
-    projectHeader: {
-      display: 'flex',
-      alignItems: 'center',
-      marginBottom: '20px',
-      gap: '15px'
-    },
-    projectIcon: {
-      fontSize: '2rem',
-      background: 'transparent',
-      width: '60px',
-      height: '60px',
-      borderRadius: '0',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexShrink: 0,
-    },
-    projectTitle: {
-      fontSize: '1.3rem',
-      margin: 0,
-      color: 'var(--text-primary)'
-    },
-    projectDescription: {
-      color: 'var(--text-secondary)',
-      lineHeight: 1.6,
-      margin: '0 0 20px 0',
-      fontSize: '0.95rem'
-    },
-    projectTech: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: '10px',
-      margin: '0 0 20px 0'
-    },
-    techTag: {
-      display: 'inline-block',
-      background: 'transparent',
-      color: '#000000',
-      padding: '4px 12px',
-      borderRadius: '0',
-      fontSize: '0.8rem',
-      marginRight: '8px',
-      marginBottom: '8px',
-      border: '1px solid #000000'
-    },
-    projectRole: {
-      marginBottom: '15px',
-      h4: {
-        color: 'var(--text-primary)',
-        margin: '0 0 5px 0',
-        fontSize: '0.9rem'
-      },
-      p: {
-        color: 'var(--text-secondary)',
-        fontSize: '0.9rem',
-        margin: 0,
-        lineHeight: 1.5
-      }
-    },
-    projectOutcome: {
-      marginBottom: '20px',
-      h4: {
-        color: 'var(--text-primary)',
-        margin: '0 0 5px 0',
-        fontSize: '0.9rem'
-      },
-      p: {
-        color: 'var(--text-secondary)',
-        fontSize: '0.9rem',
-        margin: 0,
-        lineHeight: 1.5
-      }
-    },
-    projectLinks: {
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
-      gap: '15px',
-      marginTop: '20px'
-    },
-    projectImage: {
-      width: '100%',
-      height: '200px',
-      objectFit: 'cover',
-      borderRadius: '0',
-      marginBottom: '20px'
-    },
-    projectLink: {
-      padding: '10px 15px',
-      textAlign: 'center',
-      borderRadius: '0',
-      textDecoration: 'none',
-      fontWeight: 600,
-      fontSize: '0.9rem',
-      transition: 'all 0.3s ease',
-      background: '#ffffff',
-      color: '#000000',
-      border: '1px solid #000000',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '8px',
-      '&:hover': {
-        transform: 'translateY(-2px)',
-        boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)'
-      },
-      '&:active': {
-        transform: 'translateY(0)'
-      }
-    }
-  };
+
   const projects = [
     {
       title: "Sell and Trade BlindBox Platform",
@@ -238,37 +84,37 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" style={styles.projects}>
-      <div style={styles.container}>
+    <section id="projects" className="projects-section">
+      <div className="projects-container">
         <motion.div 
-          style={styles.sectionHeader}
+          className="section-header"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.99] }}
         >
-          <h2 style={styles.sectionTitle}>Featured Projects</h2>
-          <div style={styles.sectionLine}></div>
+          <h2 className="section-title">Featured Projects</h2>
+          <div className="section-line"></div>
         </motion.div>
 
         <motion.div 
-          style={styles.projectsGrid}
+          className="projects-grid"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <motion.div 
               key={project.title}
-              style={styles.projectCard}
+              className="project-card"
               variants={cardVariants}
               whileHover={{ 
                 y: -5,
                 transition: { type: "spring", stiffness: 300 }
               }}
             >
-              <div style={styles.projectHeader}>
+              <div className="project-header">
                 <motion.div 
-                  style={styles.projectIcon}
+                  className="project-icon"
                   whileHover={{ 
                     scale: 1.2, 
                     rotate: 5,
@@ -277,19 +123,19 @@ const Projects = () => {
                 >
                   {project.image}
                 </motion.div>
-                <h3 style={styles.projectTitle}>{project.title}</h3>
+                <h3 className="project-title">{project.title}</h3>
               </div>
               
-              <p style={styles.projectDescription}>{project.description}</p>
+              <p className="project-description">{project.description}</p>
               
               <motion.div 
-                style={styles.projectTech}
+                className="project-tech"
                 variants={containerVariants}
               >
-                {project.techStack.map((tech, techIndex) => (
+                {project.techStack.map((tech, index) => (
                   <motion.span 
-                    key={techIndex} 
-                    style={styles.techTag}
+                    key={index} 
+                    className="tech-tag"
                     variants={techVariants}
                     whileHover={{ 
                       scale: 1.05,
@@ -302,22 +148,22 @@ const Projects = () => {
                 ))}
               </motion.div>
               
-              <div style={styles.projectRole}>
-                <h4 style={styles.projectRole.h4}>My Role:</h4>
-                <p style={styles.projectRole.p}>{project.role}</p>
+              <div className="project-role">
+                <h4>My Role:</h4>
+                <p>{project.role}</p>
               </div>
               
-              <div style={styles.projectOutcome}>
-                <h4 style={styles.projectOutcome.h4}>Outcome:</h4>
-                <p style={styles.projectOutcome.p}>{project.outcome}</p>
+              <div className="project-outcome">
+                <h4>Outcome:</h4>
+                <p>{project.outcome}</p>
               </div>
               
-              <div style={styles.projectLinks}>
+              <div className="project-links">
                 <motion.a 
                   href={project.liveUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  style={styles.projectLink}
+                  className="project-link"
                   whileHover={{ 
                     scale: 1.05, 
                     y: -2
@@ -331,7 +177,7 @@ const Projects = () => {
                   href={project.repoUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  style={styles.projectLink}
+                  className="project-link"
                   whileHover={{ 
                     scale: 1.05, 
                     y: -2
@@ -339,7 +185,7 @@ const Projects = () => {
                   whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                   View Code
+                  View Code
                 </motion.a>
               </div>
             </motion.div>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import LogoLoop from "../ui/LogoLoop";
+import LogoLoop from "../../animations/logo loop/LogoLoop";
 
 const SkillItem = ({ name, level }) => {
   const getLevelColor = () => {
