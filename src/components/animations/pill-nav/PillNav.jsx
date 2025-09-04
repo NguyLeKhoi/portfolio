@@ -163,8 +163,13 @@ const PillNav = ({
   const scrollToSection = (e, href) => {
     e.preventDefault();
     const section = document.querySelector(href);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+    if (!section) return;
+
+    const lenis = window.__lenis;
+    if (lenis) {
+      lenis.scrollTo(section, { offset: 0, duration: 1.35, easing: (t) => 1 - Math.pow(1 - t, 2) });
+    } else {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     setIsMobileMenuOpen(false);
   };

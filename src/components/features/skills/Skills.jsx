@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import LogoLoop from "../../animations/logo loop/LogoLoop";
+import Carousel from "../../animations/carousel/Carousel";
 
 const SkillItem = ({ name, level }) => {
   const getLevelColor = () => {
@@ -230,6 +231,7 @@ const Skills = () => {
   const frontendLogos = createLogos(frontendTech);
   const backendLogos = createLogos(backendTech);
   const toolsLogos = createLogos(tools);
+  const allLogos = [...frontendLogos, ...backendLogos, ...toolsLogos];
 
   const renderSkillSection = (title, logos, items, reverse = false) => (
     <motion.div
@@ -275,7 +277,7 @@ const Skills = () => {
   );
 
   return (
-    <section id="skills" style={styles.skillsSection}>
+    <section id="skills" style={styles.skillsSection} className="skills-section" data-speed="0.15">
       <div style={styles.container}>
         <motion.div
           style={styles.header}
@@ -290,9 +292,36 @@ const Skills = () => {
           </p>
         </motion.div>
         
-        {renderSkillSection('Frontend Development', frontendLogos, frontendTech)}
-        {renderSkillSection('Backend Development', backendLogos, backendTech)}
-        {renderSkillSection('Tools & Platforms', toolsLogos, tools, true)}
+        <motion.div style={styles.skillSection} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3 }}>
+          <div style={styles.logoContainer}>
+            <LogoLoop
+              logos={allLogos}
+              speed={20}
+              direction={'left'}
+              logoHeight={60}
+              gap={60}
+              pauseOnHover
+              scaleOnHover
+              fadeOut={false}
+              fadeOutColor="transparent"
+              ariaLabel={`Technologies`}
+            />
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 320px)', gap: 16, justifyContent: 'center' }}>
+            <div>
+              <h4 style={{ textAlign: 'center', marginBottom: 8, color: 'var(--text-primary)' }}>Frontend</h4>
+              <Carousel baseWidth={320} items={frontendTech.map(t => ({ title: t.name, description: t.level >= 4 ? 'Advanced' : t.level >= 3 ? 'Intermediate' : 'Beginner', id: t.name, icon: <img src={t.icon} alt={t.name} style={{ width: 16, height: 16 }} /> }))} />
+            </div>
+            <div>
+              <h4 style={{ textAlign: 'center', marginBottom: 8, color: 'var(--text-primary)' }}>Backend</h4>
+              <Carousel baseWidth={320} items={backendTech.map(t => ({ title: t.name, description: t.level >= 4 ? 'Advanced' : t.level >= 3 ? 'Intermediate' : 'Beginner', id: t.name, icon: <img src={t.icon} alt={t.name} style={{ width: 16, height: 16 }} /> }))} />
+            </div>
+            <div>
+              <h4 style={{ textAlign: 'center', marginBottom: 8, color: 'var(--text-primary)' }}>Tools</h4>
+              <Carousel baseWidth={320} items={tools.map(t => ({ title: t.name, description: t.level >= 4 ? 'Advanced' : t.level >= 3 ? 'Intermediate' : 'Beginner', id: t.name, icon: <img src={t.icon} alt={t.name} style={{ width: 16, height: 16 }} /> }))} />
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

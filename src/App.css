@@ -10,52 +10,53 @@
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Smooth Scrolling Setup */
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+#smooth-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+#smooth-content {
+  position: relative;
+  width: 100%;
+}
+
 /* Base Styles */
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
   color: #000000;
-  background-color: transparent;
+  background-color: #ffffff;
+  background-image: url('/background/vecteezySubtleBackgroundFV0223_generated.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
   margin: 0;
   padding: 0;
-}
-
-.App {
   min-height: 100vh;
-  background-image: url('/background/vecteezySubtleBackgroundFV0223_generated.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
 }
 
 /* Section styles */
 section {
   color: #000000;
   margin: 0;
-  padding: 0;
+  padding: 24px 0; /* unified smaller vertical padding */
   position: relative;
-  background: none !important;
-}
-
-/* Experience and Education sections */
-section#experience,
-section#education {
-  padding: 0;
-  margin: 0;
-}
-
-/* Remove margins between sections */
-section + section {
-  margin: 0;
-}
-
-/* Header styles */
-header {
-  position: relative;
-  z-index: 100;
+  background: transparent;
 }
 
 /* Section content */
@@ -65,7 +66,6 @@ header {
   padding: 0 2rem;
   position: relative;
   z-index: 1;
-  background: none !important;
 }
 
 /* Scrollbar */
@@ -88,7 +88,7 @@ header {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3 {
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 16px;
@@ -98,9 +98,6 @@ h1, h2, h3, h4, h5, h6 {
 h1 { font-size: 3.5rem; }
 h2 { font-size: 2.5rem; }
 h3 { font-size: 2rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
 
 p {
   margin-bottom: 16px;
@@ -112,99 +109,26 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 32px;
+  padding: 12px 24px;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  transition: var(--transition);
-  background: var(--primary-color);
-  color: var(--background-color);
-  min-height: 56px;
-  min-width: 160px;
+  transition: all 0.3s ease;
+  background: #000000;
+  color: #ffffff;
 }
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-
-.btn-secondary {
-  background: transparent;
-  color: var(--text-primary);
-  border: 2px solid var(--primary-color);
-}
-
-.btn-secondary:hover {
-  background: var(--primary-color);
-  color: var(--background-color);
-}
-
-/* Header */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(10, 10, 10, 0.95);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-color);
-  z-index: 1000;
-  padding: 16px 0;
-}
-
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-
-
-.nav {
-  display: flex;
-  gap: 8px;
-}
-
-.nav-item {
-  background: none;
-  border: none;
-  padding: 12px 20px;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: var(--transition);
-  border-radius: var(--border-radius);
-}
-
-.nav-item:hover {
-  color: var(--primary-color);
-  background: var(--surface-color);
-}
-
-
-
-/* Main content */
-main {
-  padding-top: 60px;
-}
-
-section {
-  padding: 40px 0;
-  background-color: var(--background-color);
-}
-
 
 /* Section Headers */
 .section-header {
   text-align: center;
-  margin-bottom:  px;
 }
 
 .section-title {
@@ -231,18 +155,18 @@ section {
 
 /* Hero Section */
 .hero {
-  padding: 40px 0 30px;
+  padding: 0; /* rely on global section spacing */
   background: var(--background-color);
   min-height: calc(100vh - 80px);
   display: flex;
   align-items: center;
-  margin-top: -20px;
+  margin-top: 0;
 }
 
 .hero-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 32px;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
@@ -257,7 +181,7 @@ section {
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--primary-color);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .hero-title {
@@ -278,14 +202,14 @@ section {
 .hero-description {
   font-size: 1.125rem;
   color: var(--text-secondary);
-  margin-bottom: 40px;
+  margin-bottom: 16px;
   line-height: 1.6;
 }
 
 .hero-stats {
   display: flex;
-  gap: 48px;
-  margin-bottom: 48px;
+  gap: 24px;
+  margin-bottom: 16px;
 }
 
 .stat-item {
@@ -358,19 +282,18 @@ section {
 .about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
   align-items: center;
 }
 
 .about-description {
   font-size: 1.125rem;
   color: var(--text-secondary);
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   line-height: 1.7;
 }
 
 .about-highlights {
-  margin-top: 32px;
+  margin-top: 16px;
 }
 
 .highlight-item {
@@ -407,14 +330,12 @@ section {
 
 /* Skills Section */
 .skills-section {
-  padding: 100px 0;
   position: relative;
   background-color: var(--background-color);
 }
 
 .skills-section .section-header {
   text-align: center;
-  margin-bottom: 60px;
 }
 
 .skills-section .section-title {
@@ -437,9 +358,9 @@ section {
 /* Tech Stack Section */
 .tech-stack-section {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 20px;  /* Giảm từ 60px xuống 20px */
   background-color: var(--background-color);
-  padding: 40px 0;
+  padding: 20px 0;     /* Giảm padding từ 40px xuống 20px */
 }
 
 .tech-stack-section h3 {
@@ -452,19 +373,21 @@ section {
 .skills-grid-2x2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin-bottom: 60px;
+  gap: 20px;           /* Giảm từ 40px xuống 20px */
+  margin-bottom: 30px; /* Giảm từ 60px xuống 30px */
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 20px;     /* Thêm padding ngang */
 }
 
 .skill-category {
   background: var(--bg-primary);
-  padding: 32px;
+  padding: 20px;       /* Giảm từ 32px xuống 20px */
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   transition: all 0.3s ease;
+  margin-bottom: 10px; /* Thêm margin dưới nhỏ */
 }
 
 .skill-category:hover {
@@ -473,10 +396,10 @@ section {
 }
 
 .category-title {
-  font-size: 1.25rem;
+  font-size: 1.1rem;   /* Giảm kích thước chữ */
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 24px;
+  margin-bottom: 16px; /* Giảm từ 24px xuống 16px */
   text-align: center;
 }
 
@@ -623,7 +546,7 @@ section {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 32px;
+  gap: 10px;
 }
 
 .project-card {
@@ -729,17 +652,17 @@ section {
 
 .experience-content {
   display: grid;
-  gap: 80px;
+  gap: 32px;
 }
 
 .timeline {
   display: grid;
-  gap: 32px;
+  gap: 16px;
 }
 
 .timeline-item {
   display: flex;
-  gap: 24px;
+  gap: 16px;
   align-items: flex-start;
 }
 
@@ -831,7 +754,7 @@ section {
 .contact-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 32px;
 }
 
 .contact-subtitle {
@@ -877,7 +800,7 @@ section {
 
 .languages-list {
   display: grid;
-  gap: 12px;
+  gap: 8px;
 }
 
 .language-item {
@@ -934,6 +857,33 @@ section {
   min-height: 120px;
 }
 
+/* Section Transitions */
+.section {
+  position: relative;
+  padding: 80px 0;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+/* Smooth scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 /* Footer */
 .footer {
   background: var(--background-color);
@@ -947,7 +897,7 @@ section {
 
 /* Add space before footer for all sections */
 section:last-of-type {
-  margin-bottom: 80px;
+  margin-bottom: 30px;
 }
 
 .footer-content {

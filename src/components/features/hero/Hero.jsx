@@ -48,7 +48,7 @@ const Hero = () => {
   }
 
   return (
-    <section id="home" className="hero">
+    <section id="home" className="hero" data-speed="0.12">
       <div className="dither-container">
         <Dither
           waveColor={[0.5, 0.5, 0.5]}
@@ -115,7 +115,11 @@ const Hero = () => {
               transition={{ type: "spring", stiffness: 400 }}
               onClick={() => {
                 const element = document.getElementById('projects');
-                if (element) {
+                if (!element) return;
+                const lenis = window.__lenis;
+                if (lenis) {
+                  lenis.scrollTo(element, { duration: 1.3, easing: (t) => 1 - Math.pow(1 - t, 2) });
+                } else {
                   element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
               }}
@@ -136,7 +140,11 @@ const Hero = () => {
               transition={{ type: "spring", stiffness: 400 }}
               onClick={() => {
                 const element = document.getElementById('contact');
-                if (element) {
+                if (!element) return;
+                const lenis = window.__lenis;
+                if (lenis) {
+                  lenis.scrollTo(element, { duration: 1.3, easing: (t) => 1 - Math.pow(1 - t, 2) });
+                } else {
                   element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
               }}

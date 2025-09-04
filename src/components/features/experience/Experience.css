@@ -185,14 +185,6 @@
   color: #444444;
   margin: 0 0 8px 0;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.timeline-company::before {
-  content: '🏢';
-  font-size: 0.9em;
 }
 
 .timeline-period {

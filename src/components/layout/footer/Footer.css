@@ -78,16 +78,28 @@
 }
 
 .contact-item {
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   line-height: 1.5;
+  display: grid;
+  grid-template-columns: 40px 1fr; /* icon column narrower */
+  gap: 8px; /* tighter middle gap */
 }
 
 .contact-type {
-  font-size: 0.85rem;
-  color: #777777;
-  margin-bottom: 3px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-socials {
+  display: flex;
+  gap: 10px;
+}
+
+.contact-socials img {
+  width: 20px;
+  height: 20px;
+  filter: grayscale(100%);
 }
 
 .contact-link, .contact-text {

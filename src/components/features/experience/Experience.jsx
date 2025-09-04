@@ -8,7 +8,6 @@ const Experience = () => {
       company: "FPT University",
       period: "2023 - 2026",
       description: "Currently pursuing a degree in Software Engineering with focus on modern web development technologies and best practices.",
-      icon: "🎓",
       tags: ["Web Development", "Algorithms", "Data Structures", "Software Engineering"]
     },
     {
@@ -16,7 +15,6 @@ const Experience = () => {
       company: "FPT Software Academy",
       period: "08/2024 - 12/2024",
       description: "Gaining hands-on experience in software development, working on real projects and learning industry best practices.",
-      icon: "💼",
       tags: ["Frontend Development", "Team Collaboration", "Agile Methodologies"]
     }
   ]
@@ -26,13 +24,11 @@ const Experience = () => {
       title: "Web Development & Coding",
       platform: "Coursera",
       url: "https://coursera.org/share/21f60e8499376ba991e52120fbf6037a",
-      icon: "🌐"
     },
     {
       title: "Software Development Lifecycle",
       platform: "Coursera", 
       url: "https://coursera.org/share/33e3c62fbe4a7933d8b5b0099955e30f",
-      icon: "🔄"
     }
   ]
 
@@ -58,7 +54,7 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="experience-section">
+    <section id="experience" className="experience-section" data-speed="0.1">
       <div className="experience-container">
         <motion.div 
           className="section-header"
@@ -89,9 +85,6 @@ const Experience = () => {
                 >
                   <div className="timeline-content">
                     <div className="timeline-header">
-                      <div className="timeline-icon">
-                        {exp.icon}
-                      </div>
                       <div className="timeline-period">{exp.period}</div>
                     </div>
                     <h4 className="timeline-title">{exp.title}</h4>
@@ -125,7 +118,6 @@ const Experience = () => {
                   className="cert-card"
                   variants={item}
                 >
-                  <div className="cert-icon">{cert.icon}</div>
                   <h4 className="cert-title">{cert.title}</h4>
                   <p className="cert-platform">{cert.platform}</p>
                   <motion.a 

@@ -18,27 +18,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* Smooth scrolling */
+/* Disable native smooth scrolling to let Lenis handle it */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
-/* Custom scrollbar for dark theme */
-::-webkit-scrollbar {
-  width: 8px;
+/* Reduce overscroll glow/bounce */
+html, body {
+  overscroll-behavior: none;
 }
 
-::-webkit-scrollbar-track {
-  background: #1a1a1a;
-}
 
-::-webkit-scrollbar-thumb {
-  background: #00d4ff;
-  border-radius: 0;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #00b8e6;
-}
 
 
