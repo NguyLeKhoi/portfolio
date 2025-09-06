@@ -30,6 +30,8 @@ html {
   scroll-behavior: auto;
 }
 
+/* removed reduced motion overrides (revert) */
+
 /* Reduce overscroll glow/bounce */
 html, body {
   overscroll-behavior: none;
