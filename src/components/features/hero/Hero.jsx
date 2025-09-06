@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion'
-import Dither from '../backgrounds/dither/Dither';
+import { motion } from 'framer-motion';
+import Dither from '../../backgrounds/dither/Dither';
+import './Hero.css';
 
 const Hero = () => {
   const containerVariants = {
@@ -47,15 +48,8 @@ const Hero = () => {
   }
 
   return (
-    <section className="hero" style={{ position: 'relative', overflow: 'hidden' }}>
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        zIndex: 0
-      }}>
+    <section id="home" className="hero" data-speed="0.12">
+      <div className="dither-container">
         <Dither
           waveColor={[0.5, 0.5, 0.5]}
           disableAnimation={false}
@@ -67,30 +61,19 @@ const Hero = () => {
           waveSpeed={0.05}
         />
       </div>
-      <div className="hero-container" style={{ position: 'relative', zIndex: 1 }}>
+      <div className="hero-container">
         <motion.div 
           className="hero-content"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-        >
-          <motion.div 
-            className="hero-badge"
-            variants={itemVariants}
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 8px 25px rgba(0, 212, 255, 0.3)"
-            }}
-          >
-            <span>Frontend Developer</span>
-          </motion.div>
-          
+        > 
           <motion.h1 
             className="hero-title"
             variants={itemVariants}
             whileHover={{ 
               scale: 1.02,
-              textShadow: "0 0 20px rgba(0, 212, 255, 0.5)"
+              textShadow: "0 0 40px rgba(132, 0, 255, 0.5)"
             }}
           >
             NGUYỄN LÊ KHÔI
@@ -108,36 +91,50 @@ const Hero = () => {
             variants={itemVariants}
           >
             <motion.button 
-              className="btn btn-primary"
+              className="hero-button primary"
               whileHover={{ 
                 scale: 1.05, 
                 y: -3,
-                boxShadow: "0 10px 30px rgba(0, 212, 255, 0.4)"
+                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
+                background: '#ffffff',
+                color: '#000000',
+                border: '1px solid #000000'
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400 }}
               onClick={() => {
-                const element = document.getElementById('projects')
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                const element = document.getElementById('projects');
+                if (!element) return;
+                const lenis = window.__lenis;
+                if (lenis) {
+                  lenis.scrollTo(element, { duration: 1.3, easing: (t) => 1 - Math.pow(1 - t, 2) });
+                } else {
+                  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
               }}
             >
               View Projects
             </motion.button>
             <motion.button 
-              className="btn btn-secondary"
+              className="hero-button secondary"
               whileHover={{ 
                 scale: 1.05, 
                 y: -3,
-                boxShadow: "0 10px 30px rgba(255, 255, 255, 0.2)"
+                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
+                background: '#000000',
+                color: '#ffffff',
+                border: '1px solid #000000'
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400 }}
               onClick={() => {
-                const element = document.getElementById('contact')
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                const element = document.querySelector('footer.footer');
+                if (!element) return;
+                const lenis = window.__lenis;
+                if (lenis) {
+                  lenis.scrollTo(element, { duration: 1.3, easing: (t) => 1 - Math.pow(1 - t, 2) });
+                } else {
+                  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
               }}
             >
@@ -152,15 +149,20 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
         >
-          <motion.div 
-            className="image-container"
-            animate={floatingAnimation}
-          >
-            <div className="image-placeholder">
-              <span>👨‍💻</span>
-            </div>
+          <div className="image-container">
+            <motion.div 
+              className="image-placeholder floating"
+              animate={floatingAnimation}
+            >
+              <div className="image-placeholder-inner">
+                <img 
+                  src="/picture/z6938973274681_669f5e7ce5cc4f5f8cf8383f91c870f7.jpg" 
+                  alt="Nguyễn Lê Khôi"
+                />
+              </div>
+            </motion.div>
             <div className="image-frame"></div>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

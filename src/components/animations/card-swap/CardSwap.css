@@ -1,0 +1,84 @@
+.cs-card-swap-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(1%, 15%);
+  transform-origin: bottom right;
+
+  perspective: 900px;
+  overflow: visible;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.cs-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 12px;
+  border: 1px solid #fff;
+  background: #0a0a0a;
+  overflow: hidden;
+
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Card internal layout */
+.cs-card-header {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  border-bottom: 1px solid #fff;
+}
+
+.cs-card-body {
+  width: 100%;
+  height: calc(100% - 36px);
+  background-size: contain; /* show full image */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #000; /* letterbox area */
+}
+
+/* Top-most card text styles */
+.cs-card h3 {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+.cs-card p {
+  position: absolute;
+  top: 40px;
+  left: 12px;
+  margin: 0;
+  font-size: 13px;
+  color: #ffffffcc;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .cs-card-swap-container {
+    transform: scale(0.75) translate(25%, 25%);
+  }
+}
+
+@media (max-width: 480px) {
+  .cs-card-swap-container {
+    transform: scale(0.55) translate(25%, 25%);
+  }
+}

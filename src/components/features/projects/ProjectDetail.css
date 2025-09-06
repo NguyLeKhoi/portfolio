@@ -1,0 +1,131 @@
+/* Project Detail styles (scoped) */
+.project-detail {
+  /* Occupy full viewport height and prevent page scroll overflow */
+  min-height: 100dvh;
+  height: 100dvh;
+  overflow: hidden;
+  padding-top: 16px; /* small top breathing space */
+}
+
+/* Override global section spacing for this view */
+.project-detail.section {
+  padding: 0;
+  margin-bottom: 0; /* kill global section:last-of-type margin */
+}
+
+.project-detail .projects-container {
+  text-align: left;
+}
+
+.project-detail__grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-rows: auto 1fr;
+  gap: 16px;
+  align-items: start;
+  height: calc(100dvh );
+  overflow: hidden;
+}
+
+.project-detail__title {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.project-detail__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  color: #000;
+  margin-top: 0;
+  overflow: hidden;
+  padding-left: 16px; /* indent content slightly from the left */
+}
+
+.project-detail__left h3 {
+  margin: 0 0 8px 0;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.project-detail__left h3,
+.project-detail__left p,
+.project-detail__title {
+  color: #000;
+}
+
+.project-detail__left p {
+  font-size: clamp(1rem, 1.6vw, 1.1rem);
+  line-height: 1.7;
+}
+
+/* Ensure Tech Stack badges appear on a new line below the heading */
+.project-detail .project-tech {
+  display: block;
+}
+.project-detail .project-tech h3 { display: block; }
+.project-detail__tags { margin-top: 6px; }
+
+.project-detail__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-detail .tech-tag {
+  background: transparent;
+  color: #000000;
+  border: none;
+  font-size: 1rem;
+  padding: 0;
+  text-decoration: none;
+}
+.project-detail .tech-tag:hover { text-decoration: underline; }
+
+.project-detail__links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  width: 100%;
+}
+
+.project-detail .project-link {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 10px 14px;
+  font-size: 1rem;
+}
+
+.project-detail .project-link:hover {
+  background: #f5f5f5;
+  transform: translateY(-1px);
+}
+
+.project-detail__back {
+  margin-top: 24px;
+}
+
+.project-detail__right {
+  background-color: transparent;
+  height: 100%;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  
+}
+
+@media (max-width: 992px) {
+  .project-detail__grid {
+    grid-template-columns: 1fr;
+  }
+  .project-detail__right {
+    height: 460px;
+    min-height: unset;
+  }
+}
+
+
