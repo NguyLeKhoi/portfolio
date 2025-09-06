@@ -108,6 +108,7 @@ export default function Stack({
                 src={card.img}
                 alt={`card-${card.id}`}
                 className="card-image"
+                loading="lazy"
               />
             </motion.div>
           </CardRotate>
