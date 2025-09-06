@@ -92,6 +92,11 @@
   width: 100%;
 }
 
+/* Ensure detail page links stay visible on mobile despite list page overrides */
+.project-detail .project-link {
+  display: inline-flex !important;
+}
+
 .project-detail .project-link {
   background: #ffffff;
   color: #000000;
@@ -126,6 +131,32 @@
     height: 460px;
     min-height: unset;
   }
+}
+
+@media (max-width: 600px) {
+  .project-detail {
+    height: auto;
+    min-height: auto;
+  }
+  .project-detail__grid {
+    height: auto;
+    gap: 12px;
+  }
+  .project-detail__right {
+    height: 380px;
+  }
+  .project-detail__links {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .project-detail .project-link { width: 100%; justify-content: center; }
+}
+
+/* 425px and below */
+@media (max-width: 425px) {
+  .project-detail__title { font-size: clamp(1.5rem, 6.5vw, 2rem); }
+  .project-detail__left p { font-size: 0.95rem; }
+  .project-detail__right { height: 380px; }
 }
 
 

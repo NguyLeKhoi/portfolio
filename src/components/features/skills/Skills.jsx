@@ -306,18 +306,18 @@ const Skills = () => {
               ariaLabel={`Technologies`}
             />
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 320px)', gap: 16, justifyContent: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 20, justifyItems: 'center' }}>
             <div>
               <h4 style={{ textAlign: 'center', marginBottom: 8, color: 'var(--text-primary)' }}>Frontend</h4>
-              <Carousel baseWidth={320} items={frontendTech.map(t => ({ title: t.name, description: t.level >= 4 ? 'Advanced' : t.level >= 3 ? 'Intermediate' : t.level >= 2 ? 'Beginner' : 'Familiar', id: t.name, icon: <img src={t.icon} alt={t.name} style={{ width: 16, height: 16 }} /> }))} />
+              <Carousel baseWidth={360} items={frontendTech.map(t => ({ title: t.name, description: t.level >= 4 ? 'Advanced' : t.level >= 3 ? 'Intermediate' : t.level >= 2 ? 'Beginner' : 'Familiar', id: t.name, icon: <img src={t.icon} alt={t.name} style={{ width: 16, height: 16 }} /> }))} />
             </div>
             <div>
               <h4 style={{ textAlign: 'center', marginBottom: 8, color: 'var(--text-primary)' }}>Backend</h4>
-              <Carousel baseWidth={320} items={backendTech.map(t => ({ title: t.name, description: t.level >= 4 ? 'Advanced' : t.level >= 3 ? 'Intermediate' : t.level >= 2 ? 'Beginner' : 'Familiar', id: t.name, icon: <img src={t.icon} alt={t.name} style={{ width: 16, height: 16 }} /> }))} />
+              <Carousel baseWidth={360} items={backendTech.map(t => ({ title: t.name, description: t.level >= 4 ? 'Advanced' : t.level >= 3 ? 'Intermediate' : t.level >= 2 ? 'Beginner' : 'Familiar', id: t.name, icon: <img src={t.icon} alt={t.name} style={{ width: 16, height: 16 }} /> }))} />
             </div>
             <div>
               <h4 style={{ textAlign: 'center', marginBottom: 8, color: 'var(--text-primary)' }}>Tools</h4>
-              <Carousel baseWidth={320} items={tools.map(t => ({ title: t.name, description: t.level >= 4 ? 'Advanced' : t.level >= 3 ? 'Intermediate' : t.level >= 2 ? 'Beginner' : 'Familiar', id: t.name, icon: <img src={t.icon} alt={t.name} style={{ width: 16, height: 16 }} /> }))} />
+              <Carousel baseWidth={360} items={tools.map(t => ({ title: t.name, description: t.level >= 4 ? 'Advanced' : t.level >= 3 ? 'Intermediate' : t.level >= 2 ? 'Beginner' : 'Familiar', id: t.name, icon: <img src={t.icon} alt={t.name} style={{ width: 16, height: 16 }} /> }))} />
             </div>
           </div>
         </motion.div>

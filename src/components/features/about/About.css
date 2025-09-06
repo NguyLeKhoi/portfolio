@@ -148,4 +148,15 @@
   .cv-button {
     width: 100%;
   }
+
+  .stack-wrapper {
+    margin: 0 auto;
+    top: 0;
+  }
+}
+
+@media (max-width: 425px) {
+  .section-title { font-size: 1.7rem; }
+  .about-description { font-size: 0.95rem; line-height: 1.7; }
+  .stack-wrapper { max-width: 280px; }
 }

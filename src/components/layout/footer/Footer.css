@@ -213,3 +213,10 @@ textarea.form-control {
     width: 100%;
   }
 }
+
+/* 425px and below */
+@media (max-width: 425px) {
+  .footer-container { padding: 0 16px; }
+  .footer-title { font-size: 1rem; }
+  .contact-item { grid-template-columns: 28px 1fr; gap: 6px; }
+}

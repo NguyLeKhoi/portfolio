@@ -1,8 +1,18 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import './Footer.css';
 import { FiPhone, FiMail, FiMapPin } from 'react-icons/fi';
 import { FaGithub } from 'react-icons/fa';
+
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+// Initialize EmailJS once with the public key
+if (PUBLIC_KEY) {
+  try { emailjs.init({ publicKey: PUBLIC_KEY }); } catch {}
+}
 
 const Footer = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +20,8 @@ const Footer = () => {
     email: '',
     message: ''
   });
+  const [isSending, setIsSending] = useState(false);
+  const [status, setStatus] = useState(null); // 'success' | 'error' | null
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,15 +31,41 @@ const Footer = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setFormData({ name: '', email: '', message: '' });
+    setIsSending(true);
+    setStatus(null);
+
+    try {
+      if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+        throw new Error('Missing EmailJS environment variables');
+      }
+
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        }
+      );
+
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+      // Reset back to default label after 2s
+      window.setTimeout(() => setStatus(null), 2000);
+    } catch (err) {
+      console.error('Email send failed:', err);
+      setStatus('error');
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const contactInfo = [
     { type: 'phone', value: '0858 007 213', link: 'tel:0858007213', icon: <FiPhone color="#000" /> },
-    { type: 'email', value: 'nguyenlekhoi2003215@gmail.com', link: 'mailto:nguyenlekhoi2003215@gmail.com', icon: <FiMail color="#000" /> },
+    { type: 'email', value: 'nguyenlekhoi2003215@gmail.com', icon: <FiMail color="#000" /> },
     { type: 'location', value: '928 Tạ Quang Bửu phường Bình Đông quận 8', link: 'https://www.google.com/maps/place/928+%C4%90.+T%E1%BA%A1+Quang+B%E1%BB%ADu,+Ph%C6%B0%E1%BB%9Dng+5,+Qu%E1%BA%ADn+8,+H%E1%BB%93+Ch%C3%AD+Minh,+Vi%E1%BB%87t+Nam/@10.7343922,106.6558115,17z/data=!3m1!4b1!4m6!3m5!1s0x31752e437f055a13:0x3ace3403e00429b0!8m2!3d10.7343922!4d106.6583864!16s%2Fg%2F11j2vw41tb?entry=ttu&g_ep=EgoyMDI1MDgzMC4wIKXMDSoASAFQAw%3D%3D', icon: <FiMapPin color="#000" /> },
     { type: 'github', value: 'github.com/NguyLekhoi', link: 'https://github.com/NguyLekhoi', icon: null },
   ];
@@ -141,9 +179,12 @@ const Footer = () => {
                   required
                 ></textarea>
               </div>
-              <button type="submit" className="btn-submit">
-                Send Message
+              <button type="submit" className="btn-submit" disabled={isSending}>
+                {isSending ? 'Sending…' : status === 'success' ? 'Successfully sent' : 'Send Message'}
               </button>
+              {status === 'error' && (
+                <p className="form-status" style={{ color: '#a00', marginTop: '8px' }}>Failed to send. Please try again.</p>
+              )}
             </form>
           </motion.div>
         </div>

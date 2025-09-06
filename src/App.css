@@ -50,6 +50,13 @@ body {
   min-height: 100vh;
 }
 
+/* Mobile performance: avoid fixed backgrounds which trigger heavy repaints */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
 /* Section styles */
 section {
   color: #000000;
@@ -1092,4 +1099,14 @@ section:last-of-type {
   .btn {
     min-width: 100%;
   }
+}
+
+/* 425px and below - global tightening */
+@media (max-width: 425px) {
+  section { padding: 14px 0; }
+  .section-content, .footer-content { padding: 0 16px; }
+  h1 { font-size: 1.9rem; }
+  h2 { font-size: 1.6rem; }
+  h3 { font-size: 1.25rem; }
+  p { font-size: 0.95rem; line-height: 1.65; }
 }
