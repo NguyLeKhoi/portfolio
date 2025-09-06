@@ -1,0 +1,66 @@
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  color: #fff;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+}
+
+.loader-inner {
+  width: 100%;
+  max-width: 900px;
+  display: grid;
+  justify-items: center;
+}
+
+.loader-stack { 
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  justify-items: center;
+  align-items: center;
+  row-gap: 20px;
+  width: 100%;
+}
+
+.loader-name {
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(32px, 7vw, 80px);
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+  word-break: keep-all;
+  display: block;
+  width: 100%;
+  justify-self: center;
+  will-change: transform, filter, letter-spacing, opacity;
+}
+
+.loader-lines { width: 100%; display: grid; row-gap: 10px; }
+.loader-lines.top { align-self: end; }
+.loader-lines.bottom { align-self: start; }
+
+.loader-line {
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(20px, 3.5vw, 40px);
+  line-height: 1.2;
+  color: #fff;
+  will-change: transform, opacity;
+}
+
+.welcome-lines { display: grid; row-gap: 8px; margin-top: 6px; width: 100%; justify-items: center; position: relative; }
+.welcome-lines::before,
+.welcome-lines::after { content: ''; position: absolute; }
+.welcome-line { font-family: var(--font-display, sans-serif); font-size: clamp(28px, 5vw, 64px); line-height: 1.2; color: #fff; will-change: transform, opacity; text-align: center; }
+.welcome-line.left { justify-self: center; text-align: left; padding-right: 10%; }
+.welcome-line.right { justify-self: center; text-align: right; padding-left: 10%; }
+
+.loader-line.left { justify-self: start; text-align: left; }
+.loader-line.right { justify-self: end; text-align: right; }
+
+/* Progress bar removed for staged scramble loader */
+
+

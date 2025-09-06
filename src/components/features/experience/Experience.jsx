@@ -7,14 +7,14 @@ const Experience = () => {
       title: "Software Engineering Student",
       company: "FPT University",
       period: "2023 - 2026",
-      description: "Currently pursuing a degree in Software Engineering with focus on modern web development technologies and best practices.",
+      description: "Currently pursuing a degree in Software Engineering with a strong focus on modern web development technologies and best practices. Throughout the program, I have been building a solid foundation in web development, algorithms, data structures, and software engineering principles, while continuously applying theoretical knowledge to practical projects.",
       tags: ["Web Development", "Algorithms", "Data Structures", "Software Engineering"]
     },
     {
       title: "Intern",
       company: "FPT Software Academy",
       period: "08/2024 - 12/2024",
-      description: "Gaining hands-on experience in software development, working on real projects and learning industry best practices.",
+      description: "During my 3-month internship at FPT Software Academy, I worked as a Frontend Developer, contributing to internal web applications using React.js, JavaScript, and CSS. I collaborated with the team in an Agile environment, participating in Scrum meetings and sprint activities, while implementing user interfaces and integrating APIs. This hands-on experience not only improved my technical skills in frontend development but also strengthened my problem-solving, debugging, and teamwork abilities, giving me valuable insight into professional software development practices.",
       tags: ["Frontend Development", "Team Collaboration", "Agile Methodologies"]
     }
   ]

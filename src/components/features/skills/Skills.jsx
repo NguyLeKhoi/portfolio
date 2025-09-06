@@ -171,29 +171,28 @@ const Skills = () => {
 
   const frontendTech = [
     { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', level: 4.5 },
-    { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', level: 4, invert: true },
-    { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', level: 4 },
+    { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', level: 2, invert: true },
+    { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', level: 2 },
     { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', level: 4.5 },
     { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', level: 5 },
     { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg', level: 4.5 },
   ];
 
   const backendTech = [
-    { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', level: 4 },
-    { name: 'Express', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', level: 4, invert: true },
-    { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', level: 4 },
-    { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg', level: 3.5 },
-    { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', level: 3.5 },
+    { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', level: 3 },
+    { name: 'Express', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', level: 3 },
+    { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', level: 3 },
+    { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg', level: 3 },
+    { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', level: 2 },
     { name: 'REST API', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg', level: 4.5 },
-    { name: 'GraphQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg', level: 3.5 },
   ];
 
   const tools = [
     { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', level: 4.5 },
-    { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', level: 4.5, invert: true },
-    { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', level: 3.5 },
+    { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', level: 4.5 },
+    { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', level: 2 },
     { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg', level: 5 },
-    { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg', level: 4 },
+    { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg', level: 3 },
     { name: 'Postman', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg', level: 4.5 },
   ];
 
@@ -238,7 +237,7 @@ const Skills = () => {
       style={styles.skillSection}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.3 }}
     >
       <h3 style={styles.sectionTitle}>
@@ -266,7 +265,7 @@ const Skills = () => {
             key={index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: index * 0.1, duration: 0.5 }}
           >
             <SkillItem name={item.name} level={item.level} />
@@ -283,7 +282,7 @@ const Skills = () => {
           style={styles.header}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
         >
           <h2 style={styles.title}>Skills & Expertise</h2>
@@ -292,7 +291,7 @@ const Skills = () => {
           </p>
         </motion.div>
         
-        <motion.div style={styles.skillSection} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3 }}>
+        <motion.div style={styles.skillSection} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.3 }}>
           <div style={styles.logoContainer}>
             <LogoLoop
               logos={allLogos}
@@ -310,15 +309,15 @@ const Skills = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 320px)', gap: 16, justifyContent: 'center' }}>
             <div>
               <h4 style={{ textAlign: 'center', marginBottom: 8, color: 'var(--text-primary)' }}>Frontend</h4>
-              <Carousel baseWidth={320} items={frontendTech.map(t => ({ title: t.name, description: t.level >= 4 ? 'Advanced' : t.level >= 3 ? 'Intermediate' : 'Beginner', id: t.name, icon: <img src={t.icon} alt={t.name} style={{ width: 16, height: 16 }} /> }))} />
+              <Carousel baseWidth={320} items={frontendTech.map(t => ({ title: t.name, description: t.level >= 4 ? 'Advanced' : t.level >= 3 ? 'Intermediate' : t.level >= 2 ? 'Beginner' : 'Familiar', id: t.name, icon: <img src={t.icon} alt={t.name} style={{ width: 16, height: 16 }} /> }))} />
             </div>
             <div>
               <h4 style={{ textAlign: 'center', marginBottom: 8, color: 'var(--text-primary)' }}>Backend</h4>
-              <Carousel baseWidth={320} items={backendTech.map(t => ({ title: t.name, description: t.level >= 4 ? 'Advanced' : t.level >= 3 ? 'Intermediate' : 'Beginner', id: t.name, icon: <img src={t.icon} alt={t.name} style={{ width: 16, height: 16 }} /> }))} />
+              <Carousel baseWidth={320} items={backendTech.map(t => ({ title: t.name, description: t.level >= 4 ? 'Advanced' : t.level >= 3 ? 'Intermediate' : t.level >= 2 ? 'Beginner' : 'Familiar', id: t.name, icon: <img src={t.icon} alt={t.name} style={{ width: 16, height: 16 }} /> }))} />
             </div>
             <div>
               <h4 style={{ textAlign: 'center', marginBottom: 8, color: 'var(--text-primary)' }}>Tools</h4>
-              <Carousel baseWidth={320} items={tools.map(t => ({ title: t.name, description: t.level >= 4 ? 'Advanced' : t.level >= 3 ? 'Intermediate' : 'Beginner', id: t.name, icon: <img src={t.icon} alt={t.name} style={{ width: 16, height: 16 }} /> }))} />
+              <Carousel baseWidth={320} items={tools.map(t => ({ title: t.name, description: t.level >= 4 ? 'Advanced' : t.level >= 3 ? 'Intermediate' : t.level >= 2 ? 'Beginner' : 'Familiar', id: t.name, icon: <img src={t.icon} alt={t.name} style={{ width: 16, height: 16 }} /> }))} />
             </div>
           </div>
         </motion.div>

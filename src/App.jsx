@@ -10,12 +10,18 @@ import Projects from './components/features/projects/Projects';
 import Experience from './components/features/experience/Experience';
 import Footer from './components/layout/footer/Footer';
 import PillNav from './components/animations/pill-nav/PillNav';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import ProjectDetail from './components/features/projects/ProjectDetail';
+import Loader from './components/layout/loader/Loader';
+import RefreshLoader from './components/layout/loader/RefreshLoader';
 
 function App() {
+  const location = useLocation();
   const [activeSection, setActiveSection] = useState('');
   const [isNavVisible, setIsNavVisible] = useState(false);
+  const navType = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type) || 'navigate'
+  const [showLoader, setShowLoader] = useState(navType !== 'reload')
+  const [showRefreshLoader, setShowRefreshLoader] = useState(navType === 'reload')
 
   useEffect(() => {
     // Register GSAP plugin
@@ -94,8 +100,8 @@ function App() {
       // Show/hide nav based on scroll position
       setIsNavVisible(window.scrollY > 100);
       
-      // Update active section
-      const sections = ['about', 'skills', 'projects', 'experience'];
+      // Update active section (order reflects visual layout)
+      const sections = ['about', 'projects', 'skills', 'experience'];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -119,11 +125,30 @@ function App() {
     };
   }, []);
 
+  // No first-visit persistence; always show refresh loader on entry
+
+  // Ensure we always land at hero on refresh
+  useEffect(() => {
+    if (!showLoader) {
+      setTimeout(() => {
+        try {
+          const lenis = window.__lenis
+          const hero = document.getElementById('home') || document.querySelector('#home') || document.body
+          if (lenis && hero) {
+            lenis.scrollTo(hero, { duration: 0.01 })
+          } else {
+            window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+          }
+        } catch {}
+      }, 0)
+    }
+  }, [showLoader])
+
   const navItems = [
     { label: 'Hero', href: '#home' },
     { label: 'About', href: '#about' },
-    { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
+    { label: 'Skills', href: '#skills' },
     { label: 'Experience', href: '#experience' },
   ];
 
@@ -132,7 +157,13 @@ function App() {
   return (
     <div className="App">
       <div>
-          <PillNav items={navItems} isVisible={isNavVisible} activeHref={activeSection} />
+          {showLoader && <Loader durationMs={4200} holdMs={400} onDone={() => { setShowLoader(false); setShowRefreshLoader(false); }} />}
+          {showRefreshLoader && (
+            <RefreshLoader onDone={() => setShowRefreshLoader(false)} />
+          )}
+          {location.pathname.startsWith('/projects/') ? null : (
+            <PillNav items={navItems} isVisible={isNavVisible} activeHref={activeSection} />
+          )}
           <main>
             <Routes>
               <Route
@@ -143,11 +174,11 @@ function App() {
                     <div id="about" className="section">
                       <About />
                     </div>
-                    <div id="skills" className="section">
-                      <Skills />
-                    </div>
                     <div id="projects" className="section">
                       <Projects />
+                    </div>
+                    <div id="skills" className="section">
+                      <Skills />
                     </div>
                     <div id="experience" className="section">
                       <Experience />
@@ -158,7 +189,7 @@ function App() {
               <Route path="/projects/:slug" element={<ProjectDetail />} />
             </Routes>
           </main>
-          <Footer />
+          {location.pathname.startsWith('/projects/') ? null : <Footer />}
       </div>
     </div>
   )

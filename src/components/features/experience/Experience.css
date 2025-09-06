@@ -30,6 +30,7 @@
   color: #000000;
   font-weight: 800;
   letter-spacing: 2px;
+  font-family: var(--font-display);
 }
 
 .section-line {
@@ -58,6 +59,7 @@
   letter-spacing: 2px;
   font-weight: 700;
   text-align: center;
+  font-family: var(--font-display);
 }
 
 .timeline {
@@ -163,6 +165,7 @@
   line-height: 1.4;
   position: relative;
   padding-bottom: 6px;
+  font-family: var(--font-display);
 }
 
 .timeline-title::after {

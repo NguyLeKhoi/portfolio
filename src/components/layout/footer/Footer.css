@@ -29,6 +29,7 @@
   color: #000000;
   position: relative;
   padding-bottom: 10px;
+  font-family: var(--font-display);
 }
 
 .footer-title::after {
@@ -161,6 +162,7 @@ textarea.form-control {
   align-self: flex-start;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-family: var(--font-display);
 }
 
 .btn-submit:hover {

@@ -90,9 +90,9 @@
 .cv-button {
   margin-top: 15px;
   width: 340px;
-  background: #ffffff;
-  color: #000000;
-  border: 1px solid #000000;
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #ffffff;
   padding: 12px 24px;
   border-radius: 0;
   font-size: 1rem;
@@ -105,8 +105,8 @@
 }
 
 .cv-button:hover {
-  background: #000000;
-  color: #ffffff;
+  background: #ffffff;
+  color: #000000;
 }
 
 /* Responsive Styles */

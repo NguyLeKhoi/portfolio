@@ -1,3 +1,4 @@
+/* project list page styles remain here */
 /* Projects Section */
 .projects-section {
   padding: 0; /* rely on global */
@@ -10,9 +11,10 @@
 }
 
 .projects-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   position: relative;
   z-index: 1;
   text-align: center;
@@ -89,7 +91,7 @@
 }
 
 .project-row:hover .project-inline-image {
-  width: clamp(60px, 8vw, 120px);
+  width: clamp(140px, 16vw, 240px);
   margin: 0 12px;
   opacity: 1;
   transform: translateY(0) scale(1);
@@ -108,9 +110,7 @@
   height: 5px;
   background: #000000;
   margin-top: 24px;
-  width: calc(100% - 48px); 
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
 /* floating preview similar to locomotive */

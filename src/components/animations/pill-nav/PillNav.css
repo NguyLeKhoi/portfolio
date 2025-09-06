@@ -87,6 +87,7 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  font-family: var(--font-display);
 }
 
 .pill .hover-circle {

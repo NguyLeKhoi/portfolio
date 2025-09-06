@@ -67,18 +67,7 @@ const Hero = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-        >
-          <motion.div 
-            className="hero-badge"
-            variants={itemVariants}
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 8px 25px rgba(0, 212, 255, 0.3)"
-            }}
-          >
-            <span>Frontend Developer</span>
-          </motion.div>
-          
+        > 
           <motion.h1 
             className="hero-title"
             variants={itemVariants}
@@ -139,7 +128,7 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400 }}
               onClick={() => {
-                const element = document.getElementById('contact');
+                const element = document.querySelector('footer.footer');
                 if (!element) return;
                 const lenis = window.__lenis;
                 if (lenis) {

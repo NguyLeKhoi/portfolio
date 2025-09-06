@@ -7,45 +7,18 @@ const Projects = () => {
   const projects = [
     {
       slug: "blindbox-vn",
-      logo: "🎁",
       title: "BlindBox Platform",
-      displayTitle: "Mate Libre",
-      previewImage: "/picture/z6938973274681_669f5e7ce5cc4f5f8cf8383f91c870f7.jpg",
-      description: "A comprehensive platform for buying, selling, and trading blind box items with user authentication and account management.",
-      techStack: ["React", "React Router", "TailwindCSS", "Axios", "Vite", "Vercel"],
-      role: "Developed the main UI, built responsive layouts, and integrated APIs for authentication and account management. Implemented state management with React Hooks and optimized user experience.",
-      outcome: "Successfully deployed on Vercel",
-      liveUrl: "https://blindbox-vn.vercel.app",
-      repoUrl: "https://github.com/giangndse183728/BlindBox-FE",
-      image: "🎁"
+      previewImage: "/project picture/blindbox/bl1.png",
     },
     {
       slug: "smoking-cessation",
-      logo: "🚭",
-      title: "Smoking Support Platform",
-      displayTitle: "Stenger Bike",
-      previewImage: "/picture/z6938972385322_84ff54f68e27aefb99be50ab50a6a900.jpg",
-      description: "A supportive platform designed to help users quit smoking with progress tracking and motivational features.",
-      techStack: ["React", "React Router", "Material UI", "TailwindCSS", "Axios", "Vercel"],
-      role: "Designed and implemented the user interface for a smoking cessation support platform. Built reusable components, managed state, and integrated APIs to display progress data. Ensured a responsive and user-friendly design across desktop and mobile.",
-      outcome: "Fully deployed frontend available on Vercel",
-      liveUrl: "https://fe-smoking-cessation-support-platfo.vercel.app",
-      repoUrl: "https://github.com/NguyLekhoi/FE-Smoking-Cessation-Support-Platform",
-      image: "🚭"
+      title: "Smoking Cessation Support Platform",
+      previewImage: "/project picture/smoking/smk1.png",
     },
     {
       slug: "vestige-platform",
-      logo: "🛍️",
       title: "Vestige-Platform",
-      displayTitle: "Lightship",
-      previewImage: "/picture/z6939054747120_487ae2bdd47957eb919ccf48e8c82303.jpg",
-      description: "A modern e-commerce platform built with Next.js featuring server-side rendering and dynamic routing.",
-      techStack: ["Next.js", "React", "TailwindCSS/Material UI", "Axios", "Vercel"],
-      role: "Built the frontend of the Vestige platform using Next.js with server-side rendering and dynamic routing. Developed reusable and responsive components, integrated authentication and data management APIs, and optimized performance with React Hooks/Context API.",
-      outcome: "Successfully deployed on Vercel",
-      liveUrl: "https://vestigehouse.vercel.app",
-      repoUrl: "https://github.com/giangndve183728/Vestige-Platform-ft",
-      image: "🛍️"
+      previewImage: "/project picture/vestige/ves1.png",
     }
   ]
 
@@ -141,7 +114,8 @@ const Projects = () => {
         <motion.div 
           className="section-header"
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.99] }}
         >
           <h2 className="section-title">Featured work</h2>
@@ -152,7 +126,8 @@ const Projects = () => {
           className="projects-grid"
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
         >
           {projects.map((project) => (
             <motion.button

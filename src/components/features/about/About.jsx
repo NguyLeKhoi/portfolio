@@ -59,7 +59,8 @@ const About = () => {
         <motion.div
           className="section-header"
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.99] }}
         >
           <h2 className="section-title">About Me</h2>
@@ -71,7 +72,8 @@ const About = () => {
             className="about-text"
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
           >
             <motion.p
               className="about-description"
@@ -143,7 +145,8 @@ const About = () => {
             className="about-image"
             variants={imageVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
           >
             <div className="stack-wrapper">
               <Stack
