@@ -73,12 +73,18 @@
 
 @media (max-width: 768px) {
   .cs-card-swap-container {
-    transform: scale(0.75) translate(25%, 25%);
+    transform: scale(0.8) translate(15%, 15%);
   }
 }
 
 @media (max-width: 480px) {
   .cs-card-swap-container {
-    transform: scale(0.55) translate(25%, 25%);
+    transform: scale(0.8) translate(5%, 10%);
+  }
+}
+
+@media (max-width: 425px) {
+  .cs-card-swap-container {
+    transform: scale(0.9) translate(2%, 6%);
   }
 }

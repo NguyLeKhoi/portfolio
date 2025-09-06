@@ -30,10 +30,11 @@ function App() {
     }
 
     // Initialize Lenis smooth scrolling
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
     const lenis = new Lenis({
       smoothWheel: true,
-      lerp: 0.06,
-      wheelMultiplier: 0.8,
+      lerp: isMobile ? 0.12 : 0.06,
+      wheelMultiplier: isMobile ? 0.6 : 0.8,
       smoothTouch: true
     });
 
@@ -63,15 +64,17 @@ function App() {
     );
 
     // Parallax via data-speed (positive moves slower, negative opposite)
-    const parallaxes = gsap.utils.toArray('[data-speed]');
-    parallaxes.forEach((el) => {
-      const speed = parseFloat(el.getAttribute('data-speed')) || 0.2;
-      gsap.to(el, {
-        yPercent: speed * -30,
-        ease: 'none',
-        scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
+    if (!isMobile) {
+      const parallaxes = gsap.utils.toArray('[data-speed]');
+      parallaxes.forEach((el) => {
+        const speed = parseFloat(el.getAttribute('data-speed')) || 0.2;
+        gsap.to(el, {
+          yPercent: speed * -30,
+          ease: 'none',
+          scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
+        });
       });
-    });
+    }
 
     // Lerp-like stagger for elements with data-lerp
     const lerps = gsap.utils.toArray('[data-lerp]');
@@ -88,10 +91,12 @@ function App() {
     });
 
     // Fixed/pin sections (data-pin)
-    const pins = gsap.utils.toArray('[data-pin]');
-    pins.forEach((el) => {
-      ScrollTrigger.create({ trigger: el, start: 'top top+=60', end: 'bottom top', pin: true, pinSpacing: true });
-    });
+    if (!isMobile) {
+      const pins = gsap.utils.toArray('[data-pin]');
+      pins.forEach((el) => {
+        ScrollTrigger.create({ trigger: el, start: 'top top+=60', end: 'bottom top', pin: true, pinSpacing: true });
+      });
+    }
 
     // ensure initial measurements and activation
     ScrollTrigger.refresh();

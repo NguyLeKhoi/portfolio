@@ -156,7 +156,9 @@ const About = () => {
                 cardDimensions={{ width: 340, height: 460 }}
               />
             </div>
-            <motion.button
+            <motion.a
+              href="/cv.pdf"
+              download
               className="cv-button"
               whileHover={{
                 scale: 1.05,
@@ -167,7 +169,7 @@ const About = () => {
               transition={{ type: "spring", stiffness: 400 }}
             >
               Download my CV
-            </motion.button>
+            </motion.a>
           </motion.div>
         </div>
       </div>

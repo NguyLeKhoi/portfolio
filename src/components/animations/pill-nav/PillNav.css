@@ -158,6 +158,21 @@
   }
 }
 
+/* On smaller phones (<=480px), keep desktop pills instead of hamburger */
+@media (max-width: 480px) {
+  .desktop-only { display: block; }
+  .mobile-only { display: none; }
+  .pill-nav {
+    width: calc(100% - 16px);
+    padding: 6px;
+    gap: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .pill-list { flex-wrap: nowrap; }
+  .pill { font-size: 14px; padding: 0 18px; }
+}
+
 .mobile-menu-button {
   width: var(--nav-h);
   height: var(--nav-h);

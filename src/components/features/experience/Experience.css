@@ -381,3 +381,14 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* 425px and below: tighter text and layout */
+@media (max-width: 425px) {
+  .experience-container { padding: 0 16px; }
+  .section-title { font-size: 1.6rem; }
+  .subtitle { font-size: 1.05rem; letter-spacing: 1.2px; }
+  .timeline-item { padding: 14px; }
+  .timeline-title { font-size: 1.05rem; }
+  .timeline-company { font-size: 0.9rem; }
+  .timeline-desc { font-size: 0.9rem; line-height: 1.6; }
+}
