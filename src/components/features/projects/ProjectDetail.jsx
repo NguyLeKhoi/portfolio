@@ -32,7 +32,7 @@ const PROJECTS = {
     techStack: ['Next.js', 'React', 'TailwindCSS/Material UI', 'Axios', 'Vercel'],
     role: 'In this project, I took charge of the Admin dashboard, creating tools for order management, post approval, and financial tracking, as well as building a dedicated Shipper page to handle delivery operations. I also contributed to performance optimization and data handling with React Hooks and Context API.',
     liveUrl: 'https://vestigehouse.vercel.app',
-    repoUrl: 'https://github.com/giangndve183728/Vestige-Platform-ft',
+    repoUrl: 'https://github.com/giangndse183728/Vestige-Platform-FE',
     images: { folder: '/project%20picture/vestige/', prefix: 'ves', count: 7 }
   }
 };
